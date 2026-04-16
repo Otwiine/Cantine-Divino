@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantine Divino — Kampala's Finest Italian Dining</title>
+    <meta name="description" content="Authentic Italian cuisine, premium steaks, and curated wines in a romantic garden setting in Kampala, Uganda.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="media/images/logo.jpg">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="nav-logo">
+                <img src="media/images/logo.jpg" alt="Cantine Divino" class="logo-img">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact" class="nav-reserve">Reserve</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <img src="media/images/ambiance.png" alt="Cantine Divino ambiance" class="hero-bg-img">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Kololo, Kampala</p>
+            <h1 class="hero-title">A Taste of Italy<br>in the Heart of Kampala</h1>
+            <p class="hero-subtitle">Authentic Italian cuisine, premium steaks and fine wines in an intimate garden setting.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-gold">Reserve Your Table</a>
+                <a href="#menu" class="btn btn-outline">Explore Menu</a>
+            </div>
+        </div>
+        <a href="#about" class="hero-scroll" aria-label="Scroll down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Social Proof Bar -->
+    <section class="proof-bar">
+        <div class="container">
+            <div class="proof-items">
+                <div class="proof-item">
+                    <span class="proof-number">4.4</span>
+                    <div class="proof-detail">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span>1,000+ Google Reviews</span>
+                    </div>
+                </div>
+                <div class="proof-divider"></div>
+                <div class="proof-testimonials">
+                    <blockquote>"Best steak in Kampala."</blockquote>
+                    <blockquote>"Amazing atmosphere and attentive service."</blockquote>
+                    <blockquote>"Perfect for a date night."</blockquote>
+                </div>
+                <div class="proof-divider"></div>
+                <div class="proof-item">
+                    <span class="proof-number">10+</span>
+                    <div class="proof-detail">
+                        <span>Years of Excellence</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- About / What We Offer -->
+    <section id="about" class="offerings">
+        <div class="container">
+            <span class="section-label">What We Offer</span>
+            <h2 class="section-title">Crafted for an<br>Unforgettable Experience</h2>
+            <p class="section-subtitle">From handmade pasta to expertly prepared steaks, every dish tells a story of Italian tradition.</p>
+
+            <div class="offerings-grid">
+                <div class="offering-card">
+                    <div class="offering-icon-wrap">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Authentic Italian Cuisine</h3>
+                    <p>Handmade pasta and imported ingredients prepared with time-honoured techniques.</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon-wrap">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Premium Steaks</h3>
+                    <p>Expertly selected cuts, perfectly aged and grilled to your preference.</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon-wrap">
+                        <i class="fas fa-wine-glass-alt"></i>
+                    </div>
+                    <h3>Fine Wines &amp; Cocktails</h3>
+                    <p>Curated selection of Italian and international wines, expertly crafted cocktails.</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon-wrap">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Romantic Garden Ambience</h3>
+                    <p>A cozy, elegant space designed for memorable moments and special celebrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Experience Section -->
+    <section class="experience">
+        <div class="container">
+            <div class="experience-grid">
+                <div class="experience-text" data-animate>
+                    <span class="section-label">The Experience</span>
+                    <h2 class="section-title left">Where Every<br>Meal Becomes<br>a Memory</h2>
+                    <p>A cozy, elegant space designed for memorable moments — whether it's a date night, celebration, or quiet evening with friends. Every detail, from the soft candlelight to the carefully curated ambience, is crafted to enhance your dining experience.</p>
+                    <p>Our garden setting offers the perfect blend of sophistication and warmth, creating an atmosphere where time slows down and every bite is savoured.</p>
+                    <a href="#contact" class="btn btn-gold mt">Reserve a Table</a>
+                </div>
+                <div class="experience-visual" data-animate>
+                    <div class="experience-img-wrap">
+                        <img src="media/images/pasta_wine.png" alt="Pasta and wine at Cantine Divino">
+                    </div>
+                    <div class="experience-video-wrap">
+                        <video autoplay muted loop playsinline>
+                            <source src="media/videos/showcase.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Menu Highlights -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <span class="section-label">On The Menu</span>
+            <h2 class="section-title">Menu Highlights</h2>
+            <p class="section-subtitle">Indulge in a curated menu of Italian classics, premium meats, and fine wines.</p>
+
+            <div class="menu-grid">
+                <div class="menu-card" data-animate>
+                    <div class="menu-card-img">
+                        <img src="media/images/steak.png" alt="Premium Steak">
+                        <div class="menu-tag">Signature</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <h3>T-Bone Steak</h3>
+                        <p>Premium cut, perfectly aged and grilled to perfection. Served with seasonal vegetables and our signature sauce.</p>
+                    </div>
+                </div>
+                <div class="menu-card" data-animate>
+                    <div class="menu-card-img">
+                        <img src="media/images/pasta.png" alt="House Pasta">
+                        <div class="menu-tag">Classic</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <h3>House Pasta</h3>
+                        <p>Handmade pasta with fresh ingredients and traditional Italian sauce. A timeless classic prepared with care.</p>
+                    </div>
+                </div>
+                <div class="menu-card" data-animate>
+                    <div class="menu-card-img">
+                        <img src="media/images/cut_steak.png" alt="Lamb Chops">
+                        <div class="menu-tag">Chef's Pick</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <h3>Lamb Chops</h3>
+                        <p>Tender, succulent lamb chops with Mediterranean herbs and a delicate reduction. A true delicacy.</p>
+                    </div>
+                </div>
+                <div class="menu-card" data-animate>
+                    <div class="menu-card-img">
+                        <img src="media/images/drinks.png" alt="Drinks Selection">
+                        <div class="menu-tag">Bar</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <h3>Cocktails &amp; Wines</h3>
+                        <p>Curated selection of Italian and international wines, expertly crafted cocktails and spirits.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Live Music Banner -->
+    <section class="live-music">
+        <video autoplay muted loop playsinline class="bg-vid">
+            <source src="media/videos/jazz.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <div class="content" data-animate>
+            <h2>Live Jazz Nights</h2>
+            <p>Experience the vibrant rhythm of Kampala with our fine live jazz performances.</p>
+        </div>
+    </section>
+
+    <!-- Gallery / Video Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <span class="section-label">Gallery</span>
+            <h2 class="section-title">A Glimpse Inside</h2>
+            <p class="section-subtitle">Moments from our kitchen, bar, and garden.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item wide video-item" data-animate>
+                <video autoplay muted loop playsinline>
+                    <source src="media/videos/area.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-video-label">Atmosphere</div>
+            </div>
+            <div class="gallery-item tall video-item" data-animate>
+                <video autoplay muted loop playsinline>
+                    <source src="media/videos/manhatten.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-video-label">Behind the Bar</div>
+            </div>
+            <div class="gallery-item" data-animate>
+                <img src="media/images/table.png" alt="Dining Table">
+            </div>
+            <div class="gallery-item large video-item" data-animate>
+                <video autoplay muted loop playsinline>
+                    <source src="media/videos/cooking.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-video-label">Our Kitchen</div>
+            </div>
+            <div class="gallery-item" data-animate>
+                <img src="media/images/food.png" alt="Italian food">
+            </div>
+            <div class="gallery-item wide" data-animate>
+                <img src="media/images/steak2.png" alt="Grilled steak">
+            </div>
+            <div class="gallery-item" data-animate>
+                <img src="media/images/drink.png" alt="Cocktail">
+            </div>
+            <div class="gallery-item" data-animate>
+                <img src="media/images/chair.png" alt="Comfortable seating">
+            </div>
+            <div class="gallery-item" data-animate>
+                <img src="media/images/food1.png" alt="Gourmet dish">
+            </div>
+            <div class="gallery-item" data-animate>
+                <img src="media/images/drink2.png" alt="Wine selection">
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Location Section -->
+    <section id="location" class="location-section">
+        <div class="container">
+            <span class="section-label">Find Us</span>
+            <h2 class="section-title">Visit Us</h2>
+            <p class="section-subtitle">Located in Kololo, along Mabua Road — easily accessible and perfect for your next night out.</p>
+
+            <div class="location-grid">
+                <div class="location-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>Mabua Road, Kololo<br>Kampala, Uganda</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <a href="tel:+256700805000">0700 805000</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Hours</h3>
+                            <p>9:00 AM &ndash; 11:00 PM<br>Everyday</p>
+                        </div>
+                    </div>
+                    <div class="info-socials">
+                        <a href="https://www.instagram.com/cantinedivino.ug/" target="_blank" rel="noopener" class="info-social-link" title="Instagram">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://www.facebook.com/cantinedivino.ug/" target="_blank" rel="noopener" class="info-social-link" title="Facebook">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                    </div>
+                    <a href="https://www.google.com/maps/search/Cantine+Divino+Kampala" target="_blank" rel="noopener" class="btn btn-outline-dark">
+                        <i class="fas fa-map"></i> Open in Google Maps
+                    </a>
+                </div>
+                <div class="location-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.751168896409!2d32.588237!3d0.3324217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbba21de4103b%3A0x73bb8e14fe62a408!2sCantine%20Divino!5e0!3m2!1sen!2sug!4v1776335377579!5m2!1sen!2sug"
+                        width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Reservation Section -->
+    <section id="contact" class="reservation-section">
+        <div class="container">
+            <span class="section-label">Reservations</span>
+            <h2 class="section-title">Reserve Your Table</h2>
+            <p class="section-subtitle">Get priority reservations and exclusive offers. Fill out the form and we'll be in touch.</p>
+
+            <form id="reservationForm" class="reservation-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="0700 805000">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-gold btn-full" id="submitBtn">Send Reservation Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="cta-bg">
+            <img src="media/images/entrance.jpg" alt="Cantine Divino entrance">
+        </div>
+        <div class="cta-overlay"></div>
+        <div class="container cta-content">
+            <h2>Ready for an Unforgettable Evening?</h2>
+            <p>Join us at Cantine Divino for authentic Italian cuisine, premium wines, and romantic garden ambience. Your table awaits.</p>
+            <a href="#contact" class="btn btn-gold">Reserve Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="media/images/logo.jpg" alt="Cantine Divino" class="footer-logo">
+                    <p>Kampala's finest Italian dining experience in an intimate garden setting.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Hours</h4>
+                    <p>9:00 AM &ndash; 11:00 PM<br>Everyday</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>Mabua Road, Kololo<br>Kampala, Uganda</p>
+                    <a href="tel:+256700805000">0700 805000</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/cantinedivino.ug/" target="_blank" rel="noopener" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/cantinedivino.ug/" target="_blank" rel="noopener" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cantine Divino. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
