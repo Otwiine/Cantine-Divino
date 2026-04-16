@@ -3,1099 +3,1582 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cantine Divino — Premium Italian Dining in Kampala</title>
-  <meta name="description" content="Kampala's finest Italian dining. Premium steaks, handmade pasta, curated wines, live jazz — in an intimate garden setting in Kololo." />
-  <link rel="icon" type="image/jpg" href="media/images/logo.jpg" />
+  <title>Cantine Divino — Kampala's Finest Italian Restaurant</title>
+  <meta name="description" content="Kampala's most celebrated Italian dining experience. Premium dry-aged steaks, handmade pasta, curated Italian wines, and live jazz in a candlelit garden in Kololo." />
 
-  <!-- Google Fonts: Cormorant (display) + DM Sans (body) -->
+  <!--
+    FONT STRATEGY:
+    · Playfair Display SC — Old-world editorial gravitas for the restaurant name / display headings
+    · Playfair Display — Italic variant for emotional sub-headings and pull-quotes
+    · Jost — Geometric, clean, contemporary for UI labels, nav, body
+    Pairing rationale: Playfair's serifs carry the old-world Italian luxury;
+    Jost's low-contrast strokes keep UI elements modern and scannable.
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* =========================================================
-       DESIGN SYSTEM
-       Palette: Deep charcoal + warm ivory + champagne gold
-       Typography: Cormorant Garamond (editorial luxury) + DM Sans (clarity)
-       Strategy: Emotion-first hero → social proof → story → product → CTA loop
-    ========================================================= */
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKEN SYSTEM
+       ─────────────────────────────────────────────────────────
+       Color philosophy: Deep obsidian base — not flat black, but
+       rich warm-tinted near-black (#0C0A08) with layered surfaces.
+       Accent: Aged gold (#B8924A) — warm, not garish, signals wealth
+       without neon tackiness. Contrast text in warm off-white.
+
+       Differentiation from v1:
+       · Replaced generic charcoal with warm-tinted obsidian
+       · Gold is more muted/aged (B8924A vs C8A050) — more expensive
+       · Added grain texture overlay for tactile premium feel
+       · Added burgundy accent (#6B2737) for wine-world authenticity
+    ═══════════════════════════════════════════════════════════ */
     :root {
-      --ink:        #0f0d0b;
-      --charcoal:   #1a1713;
-      --surface:    #221e1a;
-      --card:       #2a2521;
-      --border:     rgba(200, 170, 100, 0.18);
-      --gold:       #c8a050;
-      --gold-light: #e2c07a;
-      --gold-dim:   rgba(200, 160, 80, 0.12);
-      --ivory:      #f5f0e8;
-      --ivory-muted:#c9c0ae;
-      --white:      #ffffff;
-      --radius:     4px;
-      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Surfaces */
+      --void:       #080604;
+      --obsidian:   #0C0A08;
+      --deep:       #131008;
+      --surface:    #1A1610;
+      --card:       #201C14;
+      --raised:     #26211A;
+
+      /* Brand */
+      --gold:       #B8924A;
+      --gold-bright:#D4A85C;
+      --gold-pale:  #E8C87E;
+      --gold-dim:   rgba(184, 146, 74, 0.10);
+      --gold-glow:  rgba(184, 146, 74, 0.25);
+      --wine:       #6B2737;
+      --wine-light: #8B3347;
+
+      /* Text */
+      --ivory:      #F2EDE4;
+      --cream:      #D8D0C0;
+      --mist:       #9E9484;
+      --smoke:      #6B6358;
+
+      /* Borders */
+      --border:     rgba(184, 146, 74, 0.14);
+      --border-mid: rgba(184, 146, 74, 0.28);
+
+      /* Spacing / radius */
+      --radius-sm:  3px;
+      --radius:     5px;
+      --radius-lg:  10px;
+
+      /* Motion */
+      --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out:cubic-bezier(0.4, 0, 0.2, 1);
+      --duration:   0.4s;
     }
 
+    /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
+    html { scroll-behavior: smooth; font-size: 16px; }
     body {
-      background: var(--ink);
+      background: var(--obsidian);
       color: var(--ivory);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Jost', sans-serif;
       font-weight: 300;
       line-height: 1.7;
       overflow-x: hidden;
+      /* Grain texture — pure CSS noise for premium tactile feel */
+      position: relative;
+    }
+    /* Grain overlay applied globally */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 128px 128px;
     }
 
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
-    /* ── Utility ── */
+    /* ── Layout ── */
     .container {
-      width: min(1160px, 92%);
+      width: min(1200px, 90%);
+      margin-inline: auto;
+    }
+    .container--narrow {
+      width: min(760px, 90%);
       margin-inline: auto;
     }
 
-    .section-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
+    /* ── Type Scale ── */
+    .label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.26em;
       text-transform: uppercase;
       color: var(--gold);
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
-    .section-label::after {
+    .label::before {
       content: '';
       display: block;
-      width: 40px;
+      width: 28px;
       height: 1px;
       background: var(--gold);
-      opacity: 0.5;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      line-height: 1.15;
+      opacity: 0.6;
     }
 
     /* ── Buttons ── */
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 15px 34px;
-      border-radius: var(--radius);
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
+      justify-content: center;
+      gap: 9px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      padding: 15px 32px;
+      transition: all var(--duration) var(--ease-out);
       cursor: pointer;
-      transition: var(--transition);
-      border: none;
+      position: relative;
+      overflow: hidden;
     }
-    .btn-primary {
+    /* Shimmer effect on primary button hover */
+    .btn-gold {
       background: var(--gold);
-      color: var(--ink);
+      color: var(--obsidian);
+      border: 1px solid var(--gold);
     }
-    .btn-primary:hover {
-      background: var(--gold-light);
+    .btn-gold::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: transform 0.55s var(--ease-out);
+    }
+    .btn-gold:hover {
+      background: var(--gold-bright);
+      border-color: var(--gold-bright);
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(200, 160, 80, 0.35);
+      box-shadow: 0 14px 40px var(--gold-glow);
     }
-    .btn-ghost {
+    .btn-gold:hover::after { transform: translateX(100%); }
+
+    .btn-outline {
       background: transparent;
       color: var(--ivory);
-      border: 1px solid rgba(245, 240, 232, 0.35);
+      border: 1px solid rgba(242, 237, 228, 0.28);
     }
-    .btn-ghost:hover {
+    .btn-outline:hover {
       border-color: var(--gold);
       color: var(--gold);
       transform: translateY(-2px);
     }
 
-    /* =========================================================
+    .btn-wine {
+      background: var(--wine);
+      color: var(--ivory);
+      border: 1px solid var(--wine);
+    }
+    .btn-wine:hover {
+      background: var(--wine-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(107, 39, 55, 0.5);
+    }
+
+    /* WhatsApp button */
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+      border: 1px solid #25D366;
+    }
+    .btn-whatsapp:hover {
+      background: #20BD5A;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
+    }
+
+    /* ── Divider ornament ── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--gold);
+      opacity: 0.45;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+    }
+    .ornament::before, .ornament::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: currentColor;
+    }
+
+    /* ── Scroll reveal system ── */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+    [data-reveal="left"] { transform: translateX(-32px); }
+    [data-reveal="right"] { transform: translateX(32px); }
+    [data-reveal="scale"] { transform: scale(0.96); }
+    [data-reveal].in-view {
+      opacity: 1;
+      transform: none;
+    }
+    [data-delay="1"] { transition-delay: 0.1s; }
+    [data-delay="2"] { transition-delay: 0.2s; }
+    [data-delay="3"] { transition-delay: 0.32s; }
+    [data-delay="4"] { transition-delay: 0.44s; }
+    [data-delay="5"] { transition-delay: 0.56s; }
+
+    /* ═══════════════════════════════════════════════════════════
        NAV
-    ========================================================= */
-    nav {
+       Fixed, transparent-to-dark. The gold "Reserve" pill is the
+       primary nav-level conversion trigger.
+    ═══════════════════════════════════════════════════════════ */
+    #nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 20px 0;
-      transition: background 0.4s, padding 0.4s;
+      z-index: 1000;
+      transition: background 0.5s, padding 0.4s, box-shadow 0.5s;
+      padding: 24px 0;
     }
-    nav.scrolled {
-      background: rgba(15, 13, 11, 0.96);
-      backdrop-filter: blur(16px);
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
+    #nav.solid {
+      background: rgba(8, 6, 4, 0.97);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      padding: 16px 0;
+      box-shadow: 0 1px 0 var(--border);
     }
-    .nav-inner {
+    .nav-wrap {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .nav-logo img {
-      height: 44px;
-      filter: brightness(1.1);
+      height: 40px;
+      transition: opacity 0.3s;
     }
+    .nav-logo:hover img { opacity: 0.85; }
+
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 36px;
+      gap: 40px;
     }
     .nav-links a {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--ivory-muted);
-      transition: color var(--transition);
+      color: var(--cream);
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s var(--ease-out);
     }
     .nav-links a:hover { color: var(--gold); }
-    .nav-reserve {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 9px 22px;
-      border-radius: var(--radius);
-      transition: var(--transition);
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-phone {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--mist);
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
     }
-    .nav-reserve:hover {
+    .nav-phone:hover { color: var(--gold); }
+    .nav-cta {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--obsidian);
       background: var(--gold);
-      color: var(--ink);
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      transition: all 0.3s;
+    }
+    .nav-cta:hover {
+      background: var(--gold-bright);
+      box-shadow: 0 6px 24px var(--gold-glow);
     }
 
-    /* Hamburger */
-    .hamburger {
+    .nav-hamburger {
       display: none;
       flex-direction: column;
       gap: 5px;
-      cursor: pointer;
       padding: 4px;
+      cursor: pointer;
     }
-    .hamburger span {
+    .nav-hamburger span {
       display: block;
-      width: 24px; height: 1.5px;
+      width: 22px; height: 1.5px;
       background: var(--ivory);
-      transition: var(--transition);
+      transition: all 0.3s;
     }
 
-    /* =========================================================
+    /* Mobile menu */
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--void);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-overlay.open { display: flex; }
+    .mobile-overlay a {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-style: italic;
+      color: var(--ivory);
+      transition: color 0.3s;
+    }
+    .mobile-overlay a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute;
+      top: 24px; right: 28px;
+      font-size: 1.4rem;
+      color: var(--mist);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
        HERO
-       Full-viewport with parallax-style overlay.
-       Clear hierarchy: Label → H1 → Sub → CTAs → Social Proof
-    ========================================================= */
+       ─────────────────────────────────────────────────────────
+       Design decision: Full-height cinematic. The headline splits
+       across two lines with an italic serif word — this "editorial
+       break" is the signature visual that elevates it above
+       standard restaurant sites. The gradient scrim is asymmetric
+       (heavier on left) so text stays legible as image shifts.
+
+       Conversion: Primary CTA above the fold + urgency line.
+       Secondary CTA opens menu section. Both tracked below.
+    ═══════════════════════════════════════════════════════════ */
     #hero {
       position: relative;
-      min-height: 100svh;
+      height: 100svh;
+      min-height: 680px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       overflow: hidden;
     }
+
+    /* Parallax-zoom hero background */
     .hero-bg {
       position: absolute;
-      inset: 0;
-      background-image: url('https://otwiine.github.io/Cantine-Divino/media/images/ambiance.png');
-      background-size: cover;
-      background-position: center 30%;
-      transform: scale(1.05);
-      animation: heroZoom 12s ease-in-out infinite alternate;
+      inset: -6%;
+      background: url('https://otwiine.github.io/Cantine-Divino/media/images/ambiance.png') center 35% / cover no-repeat;
+      animation: heroBreath 18s ease-in-out infinite alternate;
+      will-change: transform;
     }
-    @keyframes heroZoom {
-      from { transform: scale(1.05); }
-      to   { transform: scale(1.12); }
+    @keyframes heroBreath {
+      from { transform: scale(1); }
+      to   { transform: scale(1.08) translateX(-1%); }
     }
-    /* Multi-layer scrim: bottom-heavy for text legibility */
-    .hero-bg::after {
-      content: '';
+
+    /* Layered scrim — asymmetric for depth */
+    .hero-scrim {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(10, 8, 6, 0.92) 0%, rgba(10, 8, 6, 0.55) 45%, rgba(10, 8, 6, 0.25) 100%),
-        linear-gradient(to right, rgba(10, 8, 6, 0.4) 0%, transparent 60%);
+        linear-gradient(to right, rgba(8,6,4,0.82) 0%, rgba(8,6,4,0.35) 55%, rgba(8,6,4,0.15) 100%),
+        linear-gradient(to top, rgba(8,6,4,0.97) 0%, rgba(8,6,4,0.65) 38%, rgba(8,6,4,0.0) 70%);
     }
+
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 760px;
-      animation: heroReveal 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+      padding-bottom: 80px;
     }
-    @keyframes heroReveal {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-location {
-      display: flex;
+
+    /* Location pill */
+    .hero-loc {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 24px;
+      background: rgba(184, 146, 74, 0.12);
+      border: 1px solid var(--border-mid);
+      border-radius: 100px;
+      padding: 6px 16px 6px 12px;
+      margin-bottom: 28px;
+      animation: fadeDown 0.9s 0.2s var(--ease-out) both;
     }
-    .hero-location svg { color: var(--gold); }
-    .hero-location span {
-      font-family: 'Cinzel', serif;
+    .hero-loc svg { color: var(--gold); }
+    .hero-loc span {
       font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-weight: 500;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--gold);
     }
-    #hero h1 {
-      font-size: clamp(3rem, 6.5vw, 5.8rem);
-      font-weight: 300;
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-14px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* The headline — the money shot */
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(3.2rem, 6.8vw, 6.4rem);
+      line-height: 1.08;
       color: var(--ivory);
-      margin-bottom: 6px;
-      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      max-width: 780px;
+      animation: fadeUp 1s 0.3s var(--ease-out) both;
     }
-    #hero h1 em {
+    .hero-h1 em {
       font-style: italic;
-      color: var(--gold-light);
+      color: var(--gold-pale);
+      display: block;
     }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: none; }
+    }
+
     .hero-sub {
-      font-size: clamp(1rem, 1.6vw, 1.18rem);
-      color: var(--ivory-muted);
-      max-width: 520px;
-      margin-bottom: 40px;
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
       font-weight: 300;
-      line-height: 1.8;
+      color: var(--cream);
+      max-width: 480px;
+      line-height: 1.85;
+      margin-bottom: 36px;
+      animation: fadeUp 1s 0.45s var(--ease-out) both;
     }
+
     .hero-ctas {
       display: flex;
+      gap: 14px;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 56px;
-    }
-    .hero-proof {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-    .proof-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .proof-stars {
-      color: var(--gold);
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-    }
-    .proof-label {
-      font-size: 0.7rem;
-      color: var(--ivory-muted);
-      letter-spacing: 0.08em;
-    }
-    .proof-divider {
-      width: 1px;
-      height: 36px;
-      background: var(--border);
+      margin-bottom: 28px;
+      animation: fadeUp 1s 0.58s var(--ease-out) both;
     }
 
-    /* Scroll indicator */
-    .scroll-hint {
-      position: absolute;
-      bottom: 36px; left: 50%;
-      transform: translateX(-50%);
+    /* Urgency line */
+    .hero-urgency {
       display: flex;
-      flex-direction: column;
       align-items: center;
       gap: 8px;
+      animation: fadeUp 1s 0.7s var(--ease-out) both;
+    }
+    .urgency-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #4CAF50;
+      box-shadow: 0 0 0 0 rgba(76,175,80,0.4);
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%   { box-shadow: 0 0 0 0 rgba(76,175,80,0.5); }
+      70%  { box-shadow: 0 0 0 7px rgba(76,175,80,0); }
+      100% { box-shadow: 0 0 0 0 rgba(76,175,80,0); }
+    }
+    .urgency-text {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--mist);
+      letter-spacing: 0.04em;
+    }
+    .urgency-text strong { color: var(--ivory); font-weight: 500; }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 30px;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
       z-index: 2;
-      animation: fadeInUp 1.5s 1.2s both;
+      animation: fadeUp 1s 1.1s var(--ease-out) both;
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
-    .scroll-hint span {
-      font-family: 'Cinzel', serif;
+    .scroll-label {
       font-size: 0.58rem;
-      letter-spacing: 0.22em;
-      color: var(--ivory-muted);
+      font-weight: 500;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
+      color: var(--smoke);
+      writing-mode: vertical-rl;
     }
-    .scroll-line {
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
+    .scroll-track {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+      position: relative;
+      overflow: hidden;
     }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; transform: scaleY(1); }
-      50%       { opacity: 1;   transform: scaleY(1.15); }
+    .scroll-track::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 40%;
+      background: var(--gold);
+      animation: scrollDrop 2s ease-in-out infinite;
+    }
+    @keyframes scrollDrop {
+      0%   { transform: translateY(-100%); opacity: 1; }
+      100% { transform: translateY(280%);  opacity: 0; }
     }
 
-    /* =========================================================
-       TICKER / MARQUEE — reinforces credibility
-    ========================================================= */
-    .ticker-wrap {
+    /* Hero floating proof card — bottom right */
+    .hero-proof-card {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      background: rgba(26, 22, 16, 0.88);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius);
+      padding: 18px 24px;
+      z-index: 3;
+      animation: fadeUp 1s 0.9s var(--ease-out) both;
+    }
+    .proof-card-rating {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .proof-card-stars { color: var(--gold); font-size: 0.72rem; letter-spacing: 2px; margin-bottom: 4px; }
+    .proof-card-label { font-size: 0.68rem; color: var(--mist); letter-spacing: 0.06em; }
+
+    /* ═══════════════════════════════════════════════════════════
+       TICKER
+    ═══════════════════════════════════════════════════════════ */
+    .ticker {
       background: var(--gold);
       overflow: hidden;
-      padding: 11px 0;
+      padding: 12px 0;
+      user-select: none;
     }
-    .ticker-track {
+    .ticker-inner {
       display: flex;
-      gap: 0;
-      animation: tickerScroll 28s linear infinite;
+      animation: ticker 30s linear infinite;
       width: max-content;
     }
-    @keyframes tickerScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+    @keyframes ticker { to { transform: translateX(-50%); } }
     .ticker-item {
-      font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink);
-      white-space: nowrap;
-      padding: 0 36px;
       display: flex;
       align-items: center;
-      gap: 36px;
+      gap: 0;
+      white-space: nowrap;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--obsidian);
+      padding: 0 40px;
     }
-    .ticker-item::after {
-      content: '◆';
+    .ticker-sep {
+      display: inline-block;
+      margin: 0 16px;
+      opacity: 0.4;
       font-size: 0.5rem;
     }
 
-    /* =========================================================
-       SOCIAL PROOF
-    ========================================================= */
-    #proof {
-      padding: 90px 0;
-      background: var(--charcoal);
-      border-bottom: 1px solid var(--border);
+    /* ═══════════════════════════════════════════════════════════
+       EXPERIENCE INTRO — Atmosphere sell
+       ─────────────────────────────────────────────────────────
+       This section comes BEFORE social proof to build DESIRE first.
+       Psychology: want → validate → act (not validate → want → act).
+       Four atmosphere pillars with icon + text.
+    ═══════════════════════════════════════════════════════════ */
+    #experience {
+      padding: 120px 0 100px;
+      background: var(--deep);
+      position: relative;
     }
-    .proof-grid {
-      display: grid;
-      grid-template-columns: 1fr 2px 1fr 2px 1fr;
-      gap: 0;
-      align-items: stretch;
-      margin-bottom: 72px;
+    #experience::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
     }
-    .proof-stat {
+
+    .exp-top {
       text-align: center;
-      padding: 24px 40px;
+      max-width: 640px;
+      margin: 0 auto 80px;
     }
-    .proof-stat .number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 5vw, 4rem);
-      font-weight: 300;
+    .exp-top h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      font-weight: 400;
+      color: var(--ivory);
+      margin: 16px 0 20px;
+      line-height: 1.18;
+    }
+    .exp-top h2 em { font-style: italic; color: var(--gold-pale); }
+    .exp-top p {
+      font-size: 0.95rem;
+      color: var(--cream);
+      line-height: 1.9;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .pillar {
+      background: var(--surface);
+      padding: 44px 32px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--duration), background var(--duration);
+    }
+    .pillar::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease-out);
+    }
+    .pillar:hover {
+      background: var(--card);
+      border-color: var(--border-mid);
+    }
+    .pillar:hover::after { transform: scaleX(1); }
+
+    .pillar-icon {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .pillar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--ivory);
+      margin-bottom: 10px;
+    }
+    .pillar p {
+      font-size: 0.82rem;
+      color: var(--mist);
+      line-height: 1.75;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SOCIAL PROOF — Trust section
+       ─────────────────────────────────────────────────────────
+       Proof strip: Bold numbers. Then real-feeling testimonials.
+       Design: Each testimonial card has a left gold bar accent.
+    ═══════════════════════════════════════════════════════════ */
+    #proof {
+      padding: 100px 0;
+      background: var(--obsidian);
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+    .stat {
+      padding: 40px 36px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+      position: relative;
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display SC', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
       color: var(--gold);
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
     }
-    .proof-stat .desc {
-      font-size: 0.78rem;
-      color: var(--ivory-muted);
-      letter-spacing: 0.06em;
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--mist);
+      letter-spacing: 0.08em;
+      line-height: 1.5;
     }
-    .proof-vline {
-      background: var(--border);
-      width: 1px;
+
+    .proof-head {
+      text-align: center;
+      margin-bottom: 48px;
     }
+    .proof-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      color: var(--ivory);
+      margin: 14px 0 0;
+    }
+
     .testimonials {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 20px;
     }
-    .testimonial-card {
-      background: var(--card);
+    .tcard {
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 32px 28px;
+      border-radius: var(--radius);
+      padding: 36px 30px 30px;
       position: relative;
-      transition: var(--transition);
+      border-left: 3px solid var(--gold);
+      transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
     }
-    .testimonial-card:hover {
-      border-color: rgba(200, 160, 80, 0.4);
-      transform: translateY(-4px);
+    .tcard:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px var(--border-mid);
     }
-    .t-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      line-height: 0.8;
+
+    /* Large decorative quote mark */
+    .tcard-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      line-height: 0.6;
       color: var(--gold);
-      opacity: 0.4;
-      margin-bottom: 12px;
+      opacity: 0.22;
+      margin-bottom: 16px;
+      display: block;
     }
-    .t-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.08rem;
+    .tcard-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
       font-style: italic;
-      color: var(--ivory);
-      line-height: 1.65;
-      margin-bottom: 20px;
+      color: var(--cream);
+      line-height: 1.7;
+      margin-bottom: 24px;
     }
-    .t-meta { display: flex; align-items: center; gap: 12px; }
-    .t-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: var(--gold-dim);
-      border: 1px solid var(--gold);
+    .tcard-footer {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      gap: 13px;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+    .tcard-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 1px solid var(--border-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display SC', serif;
+      font-size: 1rem;
       color: var(--gold);
+      flex-shrink: 0;
     }
-    .t-name {
+    .tcard-name {
       font-size: 0.78rem;
+      font-weight: 600;
       color: var(--ivory);
-      font-weight: 500;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
-    .t-stars { color: var(--gold); font-size: 0.65rem; }
+    .tcard-meta {
+      font-size: 0.65rem;
+      color: var(--smoke);
+      letter-spacing: 0.06em;
+    }
+    .tcard-stars {
+      margin-left: auto;
+      color: var(--gold);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      flex-shrink: 0;
+    }
 
-    /* =========================================================
-       ABOUT / EXPERIENCE
-    ========================================================= */
+    /* ═══════════════════════════════════════════════════════════
+       ABOUT / STORY — Paired layout with overlap
+    ═══════════════════════════════════════════════════════════ */
     #about {
-      padding: 110px 0;
-      background: var(--ink);
+      padding: 120px 0;
+      background: var(--deep);
     }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
+      gap: 0;
+      align-items: stretch;
     }
-    .about-imagery {
+    .about-visual {
       position: relative;
+      min-height: 580px;
     }
     .about-img-main {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      border-radius: 6px;
-      filter: brightness(0.92) contrast(1.05);
-    }
-    .about-img-accent {
       position: absolute;
-      bottom: -30px; right: -30px;
-      width: 55%;
-      aspect-ratio: 1;
+      inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
-      border-radius: 6px;
-      border: 6px solid var(--ink);
-      filter: brightness(0.88);
+      filter: brightness(0.7) saturate(0.85);
+    }
+    /* Gold frame inset — a luxury editorial touch */
+    .about-visual::before {
+      content: '';
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(184, 146, 74, 0.3);
+      z-index: 2;
+      pointer-events: none;
     }
     .about-badge {
       position: absolute;
-      top: 30px; left: -20px;
+      bottom: 30px;
+      right: -26px;
+      z-index: 3;
       background: var(--gold);
-      color: var(--ink);
+      width: 100px; height: 100px;
       border-radius: 50%;
-      width: 90px; height: 90px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      box-shadow: 0 8px 30px rgba(200, 160, 80, 0.4);
+      box-shadow: 0 12px 40px rgba(184, 146, 74, 0.45);
     }
-    .about-badge .badge-num {
-      font-size: 1.6rem;
-      font-weight: 600;
+    .about-badge-num {
+      font-family: 'Playfair Display SC', serif;
+      font-size: 1.8rem;
+      color: var(--obsidian);
       line-height: 1;
     }
-    .about-badge .badge-txt {
-      font-size: 0.5rem;
-      letter-spacing: 0.08em;
+    .about-badge-txt {
+      font-size: 0.48rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--obsidian);
       text-align: center;
-      line-height: 1.3;
+      line-height: 1.4;
     }
-    .about-text { }
-    .about-text h2 {
-      font-size: clamp(2.4rem, 4vw, 3.4rem);
-      font-weight: 300;
+
+    .about-body {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: none;
+      padding: 72px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      font-weight: 400;
       color: var(--ivory);
       margin: 16px 0 24px;
       line-height: 1.2;
     }
-    .about-text h2 em {
-      font-style: italic;
-      color: var(--gold-light);
+    .about-body h2 em { font-style: italic; color: var(--gold-pale); }
+    .about-body p {
+      font-size: 0.92rem;
+      color: var(--cream);
+      line-height: 1.95;
+      margin-bottom: 20px;
     }
-    .about-text p {
-      color: var(--ivory-muted);
-      font-size: 0.95rem;
-      line-height: 1.9;
-      margin-bottom: 18px;
-    }
-    .about-features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 36px 0 40px;
-    }
-    .about-feature {
+    .about-attrs {
       display: flex;
-      align-items: flex-start;
-      gap: 10px;
+      flex-direction: column;
+      gap: 12px;
+      margin: 32px 0 40px;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
     }
-    .feature-icon {
-      color: var(--gold);
-      font-size: 1rem;
-      margin-top: 2px;
+    .about-attr {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: var(--cream);
+    }
+    .attr-bullet {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
       flex-shrink: 0;
     }
-    .feature-label {
-      font-size: 0.82rem;
-      color: var(--ivory-muted);
-      line-height: 1.5;
-    }
-    .feature-label strong {
-      display: block;
-      color: var(--ivory);
-      font-size: 0.88rem;
-      font-weight: 500;
-      margin-bottom: 2px;
-    }
 
-    /* =========================================================
-       OFFERINGS — Feature blocks for steaks / wine / Italian
-    ========================================================= */
+    /* ═══════════════════════════════════════════════════════════
+       OFFERINGS — Three columns, full-bleed image cards
+    ═══════════════════════════════════════════════════════════ */
     #offerings {
-      padding: 100px 0;
-      background: var(--charcoal);
+      background: var(--obsidian);
     }
-    #offerings .section-head {
+    .offerings-header {
+      padding: 100px 0 60px;
       text-align: center;
-      max-width: 600px;
-      margin: 0 auto 70px;
     }
-    #offerings .section-head h2 {
-      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
-      font-weight: 300;
+    .offerings-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
       color: var(--ivory);
       margin: 14px 0 16px;
     }
-    #offerings .section-head p {
-      color: var(--ivory-muted);
-      font-size: 0.92rem;
+    .offerings-header p {
+      font-size: 0.9rem;
+      color: var(--mist);
+      max-width: 480px;
+      margin: 0 auto;
     }
+
     .offerings-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
     }
-    .offering-card {
+    .offer-card {
       position: relative;
       overflow: hidden;
-      aspect-ratio: 3/4;
+      aspect-ratio: 2/3;
       cursor: default;
     }
-    .offering-card img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-      filter: brightness(0.6) saturate(0.85);
-    }
-    .offering-card:hover img {
-      transform: scale(1.06);
-      filter: brightness(0.5) saturate(0.75);
-    }
-    .offering-overlay {
+    .offer-card img {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(10, 8, 6, 0.95) 0%, rgba(10, 8, 6, 0.2) 55%, transparent 100%);
-      padding: 36px 30px;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.5) saturate(0.7);
+      transition: transform 0.7s var(--ease-out), filter 0.6s;
+    }
+    .offer-card:hover img {
+      transform: scale(1.07);
+      filter: brightness(0.38) saturate(0.6);
+    }
+    .offer-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,6,4,0.96) 0%, rgba(8,6,4,0.3) 55%, transparent 100%);
+      padding: 40px 32px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      transition: var(--transition);
+      transition: background 0.4s;
     }
-    .offering-tag {
-      font-family: 'Cinzel', serif;
+    .offer-tag {
       font-size: 0.58rem;
-      letter-spacing: 0.2em;
+      font-weight: 600;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 10px;
+      display: inline-block;
     }
-    .offering-card h3 {
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
-      font-weight: 300;
+    .offer-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 400;
       color: var(--ivory);
-      margin-bottom: 12px;
+      line-height: 1.15;
+      margin-bottom: 14px;
     }
-    .offering-desc {
+    .offer-desc {
       font-size: 0.82rem;
-      color: var(--ivory-muted);
-      line-height: 1.7;
+      color: var(--cream);
+      line-height: 1.75;
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.5s ease, opacity 0.4s ease;
       opacity: 0;
+      transition: max-height 0.5s var(--ease-out), opacity 0.4s;
     }
-    .offering-card:hover .offering-desc {
-      max-height: 120px;
+    .offer-card:hover .offer-desc {
+      max-height: 140px;
+      opacity: 1;
+    }
+    .offer-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 16px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s var(--ease-out), opacity 0.4s 0.1s;
+    }
+    .offer-card:hover .offer-cta-link {
+      max-height: 30px;
       opacity: 1;
     }
 
-    /* =========================================================
-       MENU PREVIEW
-    ========================================================= */
+    /* ═══════════════════════════════════════════════════════════
+       MENU — Conversion tool, not just a list
+       ─────────────────────────────────────────────────────────
+       Each item has: tag · name · description · price range.
+       Price ranges (UGX formatted) make it feel like a real menu.
+       "Chef's Choice" badge on signature items creates desire.
+    ═══════════════════════════════════════════════════════════ */
     #menu {
-      padding: 110px 0;
-      background: var(--ink);
+      padding: 120px 0;
+      background: var(--deep);
     }
-    #menu .section-head {
+    .menu-head {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 60px;
+      margin-bottom: 56px;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 24px;
     }
-    #menu .section-head-left h2 {
-      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
-      font-weight: 300;
+    .menu-head-left h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
       color: var(--ivory);
       margin: 14px 0 0;
+      line-height: 1.15;
     }
-    .menu-tabs {
+    .menu-filter {
       display: flex;
-      gap: 6px;
+      gap: 8px;
       flex-wrap: wrap;
     }
-    .menu-tab {
-      font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
+    .mf-btn {
+      font-size: 0.64rem;
+      font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 8px 18px;
-      border-radius: var(--radius);
+      padding: 9px 20px;
+      border-radius: 100px;
       border: 1px solid var(--border);
-      color: var(--ivory-muted);
-      cursor: pointer;
-      transition: var(--transition);
+      color: var(--mist);
       background: transparent;
+      cursor: pointer;
+      transition: all 0.3s;
     }
-    .menu-tab.active, .menu-tab:hover {
+    .mf-btn.active, .mf-btn:hover {
       background: var(--gold-dim);
       border-color: var(--gold);
       color: var(--gold);
     }
-    .menu-items {
+
+    .menu-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 60px;
     }
     .menu-item {
       display: flex;
       align-items: center;
-      gap: 24px;
-      background: var(--card);
-      padding: 28px 28px;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-      border-radius: 4px;
-    }
-    .menu-item:hover {
-      border-color: rgba(200, 160, 80, 0.3);
+      gap: 20px;
       background: var(--surface);
+      padding: 24px 28px;
+      transition: background var(--duration);
+      position: relative;
     }
-    .menu-item-img {
-      width: 90px; height: 90px;
-      border-radius: 4px;
-      object-fit: cover;
-      flex-shrink: 0;
-      filter: brightness(0.9) saturate(0.9);
-    }
-    .menu-item-info { flex: 1; }
-    .menu-item-tag {
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-    .menu-item h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.22rem;
-      font-weight: 600;
+    .menu-item:hover { background: var(--card); }
+
+    /* Chef's badge */
+    .chefs-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--wine);
       color: var(--ivory);
-      margin-bottom: 6px;
-    }
-    .menu-item p {
-      font-size: 0.78rem;
-      color: var(--ivory-muted);
-      line-height: 1.6;
-    }
-    .menu-cta {
-      text-align: center;
-      margin-top: 52px;
-    }
-    .menu-cta p {
-      font-size: 0.85rem;
-      color: var(--ivory-muted);
-      margin-bottom: 20px;
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 100px;
     }
 
-    /* =========================================================
-       GALLERY
-    ========================================================= */
-    #gallery {
-      padding: 0;
-      background: var(--charcoal);
+    .menu-img {
+      width: 80px; height: 80px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      flex-shrink: 0;
+      filter: brightness(0.88) saturate(0.88);
+      transition: filter 0.3s;
     }
-    .gallery-header {
+    .menu-item:hover .menu-img { filter: brightness(1) saturate(1); }
+
+    .menu-info { flex: 1; min-width: 0; }
+    .menu-tag {
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    .menu-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ivory);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .menu-desc {
+      font-size: 0.76rem;
+      color: var(--mist);
+      line-height: 1.6;
+    }
+    .menu-price {
+      font-family: 'Playfair Display SC', serif;
+      font-size: 0.82rem;
+      color: var(--gold-bright);
+      flex-shrink: 0;
+      text-align: right;
+      padding-left: 16px;
+      min-width: 90px;
+      letter-spacing: 0.04em;
+    }
+
+    .menu-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
       text-align: center;
-      padding: 90px 0 60px;
     }
-    .gallery-header h2 {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300;
+    .menu-cta-wrap p {
+      font-size: 0.82rem;
+      color: var(--mist);
+    }
+    .menu-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+    /* ═══════════════════════════════════════════════════════════
+       GALLERY
+    ═══════════════════════════════════════════════════════════ */
+    #gallery {
+      background: var(--obsidian);
+      padding-bottom: 0;
+    }
+    .gallery-head {
+      padding: 100px 0 60px;
+      text-align: center;
+    }
+    .gallery-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      font-weight: 400;
       color: var(--ivory);
       margin: 14px 0 0;
     }
-    /* Masonry-style gallery using CSS grid */
+    .gallery-head h2 em { font-style: italic; color: var(--gold-pale); }
+
+    /* 5-column asymmetric grid */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(3, 260px);
+      grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+      grid-template-rows: 300px 300px;
       gap: 3px;
     }
-    .g-item { overflow: hidden; }
-    .g-item img {
+    .g { overflow: hidden; }
+    .g img {
       width: 100%; height: 100%;
       object-fit: cover;
-      filter: brightness(0.82) saturate(0.8);
-      transition: transform 0.6s ease, filter 0.5s ease;
+      filter: brightness(0.78) saturate(0.72);
+      transition: transform 0.65s var(--ease-out), filter 0.55s;
     }
-    .g-item:hover img {
-      transform: scale(1.05);
+    .g:hover img {
+      transform: scale(1.06);
       filter: brightness(0.95) saturate(1);
     }
-    .g1 { grid-column: 1/5;  grid-row: 1/3; }
-    .g2 { grid-column: 5/9;  grid-row: 1/2; }
-    .g3 { grid-column: 9/13; grid-row: 1/3; }
-    .g4 { grid-column: 5/7;  grid-row: 2/3; }
-    .g5 { grid-column: 7/9;  grid-row: 2/3; }
-    .g6 { grid-column: 1/5;  grid-row: 3/4; }
-    .g7 { grid-column: 5/9;  grid-row: 3/4; }
-    .g8 { grid-column: 9/13; grid-row: 3/4; }
+    .g-1 { grid-column: 1; grid-row: 1/3; }
+    .g-2 { grid-column: 2; grid-row: 1; }
+    .g-3 { grid-column: 3; grid-row: 1; }
+    .g-4 { grid-column: 4; grid-row: 1; }
+    .g-5 { grid-column: 5; grid-row: 1/3; }
+    .g-6 { grid-column: 2; grid-row: 2; }
+    .g-7 { grid-column: 3; grid-row: 2; }
+    .g-8 { grid-column: 4; grid-row: 2; }
 
-    /* =========================================================
-       JAZZ STRIP
-    ========================================================= */
-    .jazz-strip {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 48px 0;
+    /* ═══════════════════════════════════════════════════════════
+       JAZZ INTERLUDE — atmospheric break
+    ═══════════════════════════════════════════════════════════ */
+    .jazz-band {
+      background: var(--wine);
+      padding: 56px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .jazz-band::before {
+      content: '♪ ♩ ♫ ♬';
+      position: absolute;
+      right: 60px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 6rem;
+      opacity: 0.08;
+      letter-spacing: 20px;
+      color: var(--ivory);
+      pointer-events: none;
+    }
+    .jazz-inner {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 60px;
+      justify-content: space-between;
+      gap: 40px;
       flex-wrap: wrap;
     }
-    .jazz-content { max-width: 480px; }
-    .jazz-content h3 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 300;
+    .jazz-left { display: flex; align-items: center; gap: 24px; }
+    .jazz-icon { font-size: 2.4rem; }
+    .jazz-copy h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 400;
+      font-style: italic;
       color: var(--ivory);
-      margin: 10px 0 12px;
+      margin-bottom: 4px;
     }
-    .jazz-content p {
-      color: var(--ivory-muted);
-      font-size: 0.88rem;
-      line-height: 1.8;
-    }
-    .jazz-note {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 8rem;
-      color: var(--gold);
-      opacity: 0.15;
-      line-height: 1;
-      user-select: none;
+    .jazz-copy p {
+      font-size: 0.82rem;
+      color: rgba(242, 237, 228, 0.75);
     }
 
-    /* =========================================================
+    /* ═══════════════════════════════════════════════════════════
        LOCATION
-    ========================================================= */
+    ═══════════════════════════════════════════════════════════ */
     #location {
-      padding: 110px 0;
-      background: var(--ink);
+      padding: 120px 0;
+      background: var(--deep);
     }
-    .location-grid {
+    .loc-grid {
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
+      grid-template-columns: 1fr 1.5fr;
       gap: 70px;
       align-items: start;
     }
-    .location-info h2 {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300;
+    .loc-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      font-weight: 400;
       color: var(--ivory);
-      margin: 14px 0 28px;
+      margin: 14px 0 36px;
+      line-height: 1.2;
     }
-    .info-block {
-      margin-bottom: 28px;
-      padding-bottom: 28px;
+    .info-row {
+      padding: 22px 0;
       border-bottom: 1px solid var(--border);
     }
-    .info-block:last-of-type { border-bottom: none; }
-    .info-block-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
+    .info-row:first-of-type { border-top: 1px solid var(--border); }
+    .info-row-label {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 8px;
     }
-    .info-block-value {
-      font-size: 0.95rem;
-      color: var(--ivory);
-      line-height: 1.7;
+    .info-row-value {
+      font-size: 0.9rem;
+      color: var(--cream);
+      line-height: 1.6;
     }
-    .info-block-value a { color: var(--ivory); }
-    .info-block-value a:hover { color: var(--gold); }
-    .hours-row {
+    .info-row-value a {
+      color: var(--cream);
+      transition: color 0.3s;
+    }
+    .info-row-value a:hover { color: var(--gold); }
+    .hours-list { display: flex; flex-direction: column; gap: 6px; }
+    .hour-row { display: flex; justify-content: space-between; font-size: 0.88rem; }
+    .hour-day { color: var(--mist); }
+    .hour-time { color: var(--cream); }
+
+    .loc-actions {
       display: flex;
-      justify-content: space-between;
-      font-size: 0.88rem;
-      margin-bottom: 6px;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 30px;
     }
-    .hours-row .day { color: var(--ivory-muted); }
-    .hours-row .time { color: var(--ivory); }
-    .map-container {
-      border-radius: 6px;
+    .map-box {
+      border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--border);
-      aspect-ratio: 4/3;
+      aspect-ratio: 4/3.2;
+      position: relative;
     }
-    .map-container iframe {
+    .map-box iframe {
       width: 100%; height: 100%;
       border: none;
-      filter: invert(0.85) hue-rotate(180deg) saturate(0.85);
+      /* Dark-mode map filter — CSS trick, no JS required */
+      filter: invert(0.88) hue-rotate(186deg) saturate(0.6) brightness(0.85);
     }
-    .social-links {
-      display: flex;
-      gap: 12px;
-      margin-top: 24px;
-    }
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 18px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
+    .map-overlay-btn {
+      position: absolute;
+      bottom: 16px; right: 16px;
+      background: var(--obsidian);
+      border: 1px solid var(--border-mid);
+      color: var(--ivory);
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.65rem;
+      font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--ivory-muted);
-      transition: var(--transition);
+      cursor: pointer;
+      transition: all 0.3s;
     }
-    .social-link:hover {
+    .map-overlay-btn:hover {
+      background: var(--gold);
+      color: var(--obsidian);
       border-color: var(--gold);
-      color: var(--gold);
     }
 
-    /* =========================================================
-       FINAL CTA
-    ========================================================= */
+    /* ═══════════════════════════════════════════════════════════
+       RESERVATION CTA — Hero-level final push
+       ─────────────────────────────────────────────────────────
+       Design: Full-width atmospheric section with entrance.jpg
+       as background. Form on right, emotional copy on left.
+       Three contact options: form, phone, WhatsApp.
+    ═══════════════════════════════════════════════════════════ */
     #reserve {
       position: relative;
-      padding: 120px 0;
       overflow: hidden;
     }
     .reserve-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://otwiine.github.io/Cantine-Divino/media/images/entrance.jpg');
-      background-size: cover;
-      background-position: center;
-      filter: brightness(0.25) saturate(0.5);
+      background: url('https://otwiine.github.io/Cantine-Divino/media/images/entrance.jpg') center / cover no-repeat;
+      filter: brightness(0.14) saturate(0.5);
+      transform: scale(1.04);
     }
-    .reserve-content {
+    .reserve-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(8,6,4,0.6) 0%, transparent 70%);
+    }
+    .reserve-inner {
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: center;
+      padding: 120px 0;
     }
+
     .reserve-left h2 {
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      font-weight: 300;
-      color: var(--ivory);
-      margin: 14px 0 20px;
-      line-height: 1.15;
-    }
-    .reserve-left h2 em { font-style: italic; color: var(--gold-light); }
-    .reserve-left p {
-      font-size: 0.92rem;
-      color: var(--ivory-muted);
-      line-height: 1.9;
-      margin-bottom: 36px;
-    }
-    .reserve-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-bottom: 40px;
-    }
-    .reserve-highlight {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.85rem;
-      color: var(--ivory-muted);
-    }
-    .reserve-highlight .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-    /* Reservation form */
-    .reserve-form {
-      background: rgba(26, 23, 19, 0.9);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 44px 36px;
-      backdrop-filter: blur(16px);
-    }
-    .reserve-form h3 {
-      font-size: 1.6rem;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
       font-weight: 400;
       color: var(--ivory);
-      margin-bottom: 6px;
+      line-height: 1.12;
+      margin: 16px 0 22px;
     }
-    .reserve-form .form-sub {
-      font-size: 0.78rem;
-      color: var(--ivory-muted);
+    .reserve-left h2 em { font-style: italic; color: var(--gold-pale); }
+    .reserve-left p {
+      font-size: 0.9rem;
+      color: var(--cream);
+      line-height: 1.9;
       margin-bottom: 32px;
     }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .form-group {
+    .reserve-perks {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-    .form-group.full { grid-column: 1/-1; }
-    .form-group label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: rgba(255,255,255,0.04);
+      gap: 12px;
+      margin-bottom: 40px;
+      padding: 24px;
+      background: rgba(184, 146, 74, 0.07);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 12px 16px;
-      color: var(--ivory);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 300;
-      transition: border-color var(--transition);
-      outline: none;
-      width: 100%;
     }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(200, 192, 174, 0.35); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
+    .perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--cream);
     }
-    .form-group select {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8a050' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      padding-right: 36px;
+    .perk-icon { color: var(--gold); flex-shrink: 0; font-size: 0.9rem; margin-top: 1px; }
+    .reserve-contact-alts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .form-group select option { background: var(--charcoal); }
-    .form-submit {
-      width: 100%;
-      padding: 16px;
-      margin-top: 8px;
-    }
-    .form-note {
-      font-size: 0.7rem;
-      color: var(--ivory-muted);
-      text-align: center;
-      margin-top: 12px;
-    }
-
-    /* Call strip below form */
-    .call-strip {
-      background: var(--gold);
-      padding: 28px 0;
-      text-align: center;
-    }
-    .call-strip p {
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
+    .alt-label {
+      font-size: 0.65rem;
+      font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--ink);
+      color: var(--smoke);
       margin-bottom: 4px;
     }
-    .call-strip a {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 600;
-      color: var(--ink);
-      letter-spacing: 0.04em;
-      transition: opacity var(--transition);
-    }
-    .call-strip a:hover { opacity: 0.75; }
 
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-    footer {
-      background: var(--charcoal);
-      border-top: 1px solid var(--border);
-      padding: 64px 0 40px;
+    /* Form card */
+    .reserve-form-card {
+      background: rgba(20, 17, 10, 0.94);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
     }
-    .footer-inner {
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 4px;
+    }
+    .form-sub {
+      font-size: 0.76rem;
+      color: var(--mist);
+      margin-bottom: 32px;
+    }
+    .form-sub a { color: var(--gold); }
+    .form-sub a:hover { text-decoration: underline; }
+
+    .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      display: block;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 7px;
+    }
+    .form-control {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(184, 146, 74, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 12px 15px;
+      color: var(--ivory);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s, background 0.3s;
+      appearance: none;
+    }
+    .form-control::placeholder { color: rgba(158,148,132,0.45); }
+    .form-control:focus {
+      border-color: var(--gold);
+      background: rgba(184, 146, 74, 0.06);
+    }
+    .form-control option { background: var(--surface); }
+    .form-select-wrap {
+      position: relative;
+    }
+    .form-select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 14px; top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid var(--gold);
+      pointer-events: none;
+    }
+    .form-submit {
+      width: 100%;
+      margin-top: 8px;
+      font-size: 0.72rem;
+      padding: 16px;
+    }
+    .form-guarantee {
+      text-align: center;
+      font-size: 0.66rem;
+      color: var(--smoke);
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHONE CTA BAND
+    ═══════════════════════════════════════════════════════════ */
+    .phone-band {
+      background: var(--gold);
+      padding: 30px 0;
+      text-align: center;
+    }
+    .phone-band-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(12,10,8,0.65);
+      margin-bottom: 5px;
+    }
+    .phone-band-num {
+      font-family: 'Playfair Display SC', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--obsidian);
+      letter-spacing: 0.04em;
+      transition: opacity 0.3s;
+    }
+    .phone-band-num:hover { opacity: 0.75; }
+
+    /* ═══════════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════════ */
+    footer {
+      background: var(--void);
+      border-top: 1px solid var(--border);
+      padding: 70px 0 36px;
+    }
+    .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 50px;
-      margin-bottom: 52px;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 56px;
+      margin-bottom: 60px;
     }
     .footer-brand img {
-      height: 40px;
-      margin-bottom: 20px;
-      filter: brightness(0.9);
+      height: 38px;
+      margin-bottom: 18px;
+      filter: brightness(0.85);
     }
     .footer-brand p {
-      font-size: 0.82rem;
-      color: var(--ivory-muted);
-      line-height: 1.8;
-      max-width: 260px;
+      font-size: 0.8rem;
+      color: var(--smoke);
+      line-height: 1.85;
+      max-width: 240px;
     }
     .footer-col h4 {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 20px;
@@ -1104,14 +1587,33 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      gap: 10px;
     }
-    .footer-col ul a {
-      font-size: 0.82rem;
-      color: var(--ivory-muted);
-      transition: color var(--transition);
+    .footer-col ul li a,
+    .footer-col ul li span {
+      font-size: 0.8rem;
+      color: var(--smoke);
+      transition: color 0.3s;
     }
-    .footer-col ul a:hover { color: var(--gold); }
+    .footer-col ul li a:hover { color: var(--gold); }
+
+    .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+    .social-pill {
+      padding: 7px 16px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      transition: all 0.3s;
+    }
+    .social-pill:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
     .footer-bottom {
       border-top: 1px solid var(--border);
       padding-top: 28px;
@@ -1122,840 +1624,891 @@
       gap: 12px;
     }
     .footer-bottom p {
-      font-size: 0.72rem;
-      color: var(--ivory-muted);
+      font-size: 0.7rem;
+      color: var(--smoke);
+    }
+    .footer-bottom span {
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
     }
 
-    /* =========================================================
-       MOBILE NAV MENU
-    ========================================================= */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 99;
-      background: rgba(15, 13, 11, 0.98);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 36px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: var(--ivory);
-      transition: color var(--transition);
-    }
-    .mobile-menu a:hover { color: var(--gold); }
-    .mobile-close {
-      position: absolute;
-      top: 28px; right: 28px;
-      font-size: 1.5rem;
-      color: var(--ivory-muted);
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-
-    /* =========================================================
+    /* ═══════════════════════════════════════════════════════════
        RESPONSIVE
-    ========================================================= */
+    ═══════════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
-      .proof-grid { grid-template-columns: 1fr 1fr 1fr; gap: 0; }
-      .proof-vline { display: none; }
+      .pillars { grid-template-columns: repeat(2, 1fr); }
       .offerings-grid { grid-template-columns: 1fr 1fr; }
-      .offering-card:nth-child(3) { grid-column: 1/-1; aspect-ratio: 16/7; }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .offer-card:nth-child(3) { grid-column: 1/-1; aspect-ratio: 16/8; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 240px 240px 240px;
+      }
+      .g-1 { grid-column: 1; grid-row: 1/3; }
+      .g-2 { grid-column: 2; grid-row: 1; }
+      .g-3 { grid-column: 3; grid-row: 1; }
+      .g-4 { grid-column: 2; grid-row: 2; }
+      .g-5 { grid-column: 3; grid-row: 2; }
+      .g-6 { grid-column: 1; grid-row: 3; }
+      .g-7 { grid-column: 2; grid-row: 3; }
+      .g-8 { grid-column: 3; grid-row: 3; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 768px) {
-      .nav-links, .nav-reserve { display: none; }
-      .hamburger { display: flex; }
+      .nav-links, .nav-phone, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
 
-      .about-grid,
-      .location-grid,
-      .reserve-content { grid-template-columns: 1fr; gap: 50px; }
+      .hero-proof-card { display: none; }
+      .hero-scroll { display: none; }
 
-      .about-img-accent { display: none; }
-
-      .menu-items { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
 
       .testimonials { grid-template-columns: 1fr; }
 
-      .proof-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { min-height: 340px; }
+      .about-badge { right: 16px; }
+      .about-body { padding: 44px 32px; border-left: 1px solid var(--border); }
+
+      .menu-grid { grid-template-columns: 1fr; }
 
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
       }
-      .g1,.g2,.g3,.g4,.g5,.g6,.g7,.g8 {
+      .g, .g-1, .g-2, .g-3, .g-4, .g-5, .g-6, .g-7, .g-8 {
         grid-column: auto;
         grid-row: auto;
         aspect-ratio: 4/3;
+        height: auto;
       }
 
-      .form-row { grid-template-columns: 1fr; }
-
-      .footer-inner { grid-template-columns: 1fr; }
+      .loc-grid { grid-template-columns: 1fr; }
+      .reserve-inner { grid-template-columns: 1fr; gap: 50px; padding: 80px 0; }
+      .form-2col { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
 
       .offerings-grid { grid-template-columns: 1fr; }
-      .offering-card:nth-child(3) { grid-column: auto; aspect-ratio: 3/4; }
-      .offering-card { aspect-ratio: 4/5; }
+      .offer-card, .offer-card:nth-child(3) {
+        grid-column: auto;
+        aspect-ratio: 3/4;
+      }
+
+      .pillars { grid-template-columns: 1fr; }
     }
 
-    /* =========================================================
-       SCROLL REVEAL (JS-driven, initial state)
-    ========================================================= */
-    .reveal {
+    /* ── Sticky WhatsApp bubble ── */
+    .wa-bubble {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 500;
+      width: 52px; height: 52px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .wa-bubble:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
+    }
+    .wa-bubble svg { width: 26px; height: 26px; fill: #fff; }
+    .wa-tooltip {
+      position: absolute;
+      right: calc(100% + 10px);
+      top: 50%; transform: translateY(-50%);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 6px 14px;
+      white-space: nowrap;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--ivory);
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      pointer-events: none;
+      transition: opacity 0.3s;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.12s; }
-    .reveal-delay-2 { transition-delay: 0.24s; }
-    .reveal-delay-3 { transition-delay: 0.36s; }
+    .wa-bubble:hover .wa-tooltip { opacity: 1; }
   </style>
 </head>
 <body>
 
-  <!-- ============================================================
-       MOBILE MENU OVERLAY
-  ============================================================ -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
-    <a href="#about" onclick="closeMobileMenu()">About</a>
-    <a href="#menu" onclick="closeMobileMenu()">Menu</a>
-    <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
-    <a href="#location" onclick="closeMobileMenu()">Location</a>
-    <a href="#reserve" class="btn btn-primary" onclick="closeMobileMenu()">Reserve</a>
+  <!-- ── Sticky WhatsApp bubble — critical for Kampala market ── -->
+  <a class="wa-bubble" href="https://wa.me/256700805000?text=Hello%2C%20I%27d%20like%20to%20make%20a%20reservation%20at%20Cantine%20Divino" target="_blank" rel="noopener" aria-label="Book via WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-tooltip">Book on WhatsApp</span>
+  </a>
+
+  <!-- ── Mobile Overlay ── -->
+  <div class="mobile-overlay" id="mobileOverlay">
+    <button class="mobile-close" onclick="closeMobile()">✕</button>
+    <a href="#experience" onclick="closeMobile()">Experience</a>
+    <a href="#menu" onclick="closeMobile()">Menu</a>
+    <a href="#gallery" onclick="closeMobile()">Gallery</a>
+    <a href="#location" onclick="closeMobile()">Visit</a>
+    <a href="#reserve" class="btn btn-gold" onclick="closeMobile()" style="font-size:0.72rem; padding: 14px 28px;">Reserve a Table</a>
   </div>
 
-  <!-- ============================================================
+  <!-- ════════════════════════════════════════════════════════════
        NAV
-       Fixed; gold "Reserve" button is the primary conversion point
-  ============================================================ -->
-  <nav id="mainNav">
-    <div class="container nav-inner">
-      <a href="#hero" class="nav-logo">
+  ═════════════════════════════════════════════════════════════ -->
+  <nav id="nav">
+    <div class="container nav-wrap">
+      <a href="#" class="nav-logo">
         <img src="https://otwiine.github.io/Cantine-Divino/media/images/logo.jpg" alt="Cantine Divino" />
       </a>
       <ul class="nav-links">
-        <li><a href="#about">Our Story</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#location">Location</a></li>
+        <li><a href="#location">Visit Us</a></li>
       </ul>
-      <a href="#reserve" class="nav-reserve">Reserve a Table</a>
-      <div class="hamburger" onclick="openMobileMenu()">
+      <div class="nav-right">
+        <a href="tel:+256700805000" class="nav-phone">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+          0700 805000
+        </a>
+        <a href="#reserve" class="nav-cta">Reserve a Table</a>
+      </div>
+      <div class="nav-hamburger" onclick="openMobile()">
         <span></span><span></span><span></span>
       </div>
     </div>
   </nav>
 
-  <!-- ============================================================
-       HERO
-       Single, powerful statement. Two CTAs. Immediate social proof.
-       Design decision: slow parallax zoom on background creates
-       cinematic feel without requiring JavaScript-heavy animation.
-  ============================================================ -->
+  <!-- ════════════════════════════════════════════════════════════
+       HERO — Hook
+       Conversion goal: Get them to either reserve or scroll.
+       Both outcomes are wins.
+  ═════════════════════════════════════════════════════════════ -->
   <section id="hero">
     <div class="hero-bg"></div>
-    <div class="container">
+    <div class="hero-scrim"></div>
+    <div class="container" style="position:relative; z-index:2;">
       <div class="hero-content">
-        <div class="hero-location">
-          <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5zm0 6.75A1.75 1.75 0 1 1 6 3.25a1.75 1.75 0 0 1 0 3.5z"/></svg>
-          <span>Mabua Road, Kololo — Kampala</span>
+        <div class="hero-loc">
+          <svg width="11" height="14" viewBox="0 0 11 14" fill="currentColor"><path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.125 5.5 8.5 5.5 8.5S11 9.625 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5A2 2 0 1 1 5.5 3.5a2 2 0 0 1 0 4z"/></svg>
+          <span>Mabua Road, Kololo · Kampala</span>
         </div>
-        <!-- H1: Emotional, specific, not generic -->
-        <h1>Where <em>Italian Soul</em><br />Meets Kampala Nights</h1>
+        <h1 class="hero-h1">
+          Kampala's Most<br />
+          <em>Coveted Table.</em>
+        </h1>
         <p class="hero-sub">
-          Hand-rolled pasta. Fire-kissed prime cuts. A wine cellar that speaks Italian. 
-          Discover Kampala's most intimate fine-dining experience — an evening you'll want to revisit.
+          Dry-aged prime cuts. Hand-rolled pasta. Italian wines that deserve the occasion.
+          An intimate candlelit garden that makes every evening feel like the first time.
         </p>
         <div class="hero-ctas">
-          <a href="#reserve" class="btn btn-primary">
-            <!-- SVG calendar icon inline -->
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <a href="#reserve" class="btn btn-gold">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             Reserve Your Table
           </a>
-          <a href="#menu" class="btn btn-ghost">View Menu</a>
+          <a href="#menu" class="btn btn-outline">View the Menu</a>
         </div>
-        <!-- Social proof embedded in hero — removes friction to trust -->
-        <div class="hero-proof">
-          <div class="proof-item">
-            <span class="proof-stars">★★★★★</span>
-            <span class="proof-label">4.4 · Google Reviews</span>
-          </div>
-          <div class="proof-divider"></div>
-          <div class="proof-item">
-            <span class="proof-stars" style="font-size:1rem; color: var(--ivory);">1,000+</span>
-            <span class="proof-label">Guests Reviewed</span>
-          </div>
-          <div class="proof-divider"></div>
-          <div class="proof-item">
-            <span class="proof-stars" style="font-size:1rem; color: var(--ivory);">10+</span>
-            <span class="proof-label">Years in Kampala</span>
-          </div>
+        <div class="hero-urgency">
+          <div class="urgency-dot"></div>
+          <p class="urgency-text">
+            <strong>Open daily, 9 AM – 11 PM.</strong>&nbsp; Weekends fill quickly — book in advance.
+          </p>
         </div>
       </div>
     </div>
-    <div class="scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
+
+    <!-- Floating rating card — proof that doesn't interrupt the journey -->
+    <div class="container" style="position:relative; z-index:3;">
+      <div class="hero-proof-card">
+        <div class="proof-card-rating">4.4</div>
+        <div class="proof-card-stars">★★★★★</div>
+        <div class="proof-card-label">1,000+ Google Reviews</div>
+      </div>
+    </div>
+
+    <div class="container" style="position:relative;">
+      <div class="hero-scroll">
+        <div class="scroll-track"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
     </div>
   </section>
 
-  <!-- Moving ticker reinforces top-line value -->
-  <div class="ticker-wrap">
-    <div class="ticker-track">
-      <!-- Duplicate items for seamless loop -->
-      <span class="ticker-item">Authentic Italian Cuisine</span>
-      <span class="ticker-item">Premium Dry-Aged Steaks</span>
-      <span class="ticker-item">Curated Italian Wine Cellar</span>
-      <span class="ticker-item">Live Jazz Evenings</span>
-      <span class="ticker-item">Intimate Garden Setting</span>
-      <span class="ticker-item">Open Daily · 9 AM – 11 PM</span>
-      <span class="ticker-item">Kololo, Kampala</span>
-      <span class="ticker-item">Authentic Italian Cuisine</span>
-      <span class="ticker-item">Premium Dry-Aged Steaks</span>
-      <span class="ticker-item">Curated Italian Wine Cellar</span>
-      <span class="ticker-item">Live Jazz Evenings</span>
-      <span class="ticker-item">Intimate Garden Setting</span>
-      <span class="ticker-item">Open Daily · 9 AM – 11 PM</span>
-      <span class="ticker-item">Kololo, Kampala</span>
+  <!-- Ticker: ambient branding reinforcement -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      <span class="ticker-item">Authentic Italian Cuisine <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Premium Dry-Aged Steaks <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Curated Italian Wine Cellar <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Live Jazz Every Friday <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Private Dining Available <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Kololo, Kampala <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Open Daily · 9AM – 11PM <span class="ticker-sep">◆</span></span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-item">Authentic Italian Cuisine <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Premium Dry-Aged Steaks <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Curated Italian Wine Cellar <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Live Jazz Every Friday <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Private Dining Available <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Kololo, Kampala <span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Open Daily · 9AM – 11PM <span class="ticker-sep">◆</span></span>
     </div>
   </div>
 
-  <!-- ============================================================
-       SOCIAL PROOF
-       Real-feeling testimonials + hard numbers create trust quickly.
-       Design decision: stats above testimonials anchors credibility
-       before the emotional quotes land.
-  ============================================================ -->
+  <!-- ════════════════════════════════════════════════════════════
+       EXPERIENCE — Desire building
+       Before trust, create want. Four emotional pillars.
+  ═════════════════════════════════════════════════════════════ -->
+  <section id="experience">
+    <div class="container">
+      <div class="exp-top" data-reveal>
+        <span class="label">The Cantine Divino Experience</span>
+        <h2>An Evening That Begins<br /><em>Before You're Seated</em></h2>
+        <p>
+          From the moment you step into our candlelit garden to the last sip of a wine you'll be trying to pronounce for weeks — Cantine Divino is designed to slow time down and make the night yours.
+        </p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar" data-reveal data-delay="1">
+          <span class="pillar-icon">🥩</span>
+          <h3>Prime Cuts, Properly Aged</h3>
+          <p>Our steaks are sourced for marbling and aged for flavour. Charcoal-finished, rested precisely, served without fuss. The T-Bone here has a following of its own.</p>
+        </div>
+        <div class="pillar" data-reveal data-delay="2">
+          <span class="pillar-icon">🍝</span>
+          <h3>Pasta Made at Dawn</h3>
+          <p>Every ribbon, every sheet, every filled pocket — shaped by hand each morning before the kitchen opens. Italian technique, no shortcuts, no dried packets.</p>
+        </div>
+        <div class="pillar" data-reveal data-delay="3">
+          <span class="pillar-icon">🍷</span>
+          <h3>A Wine List Worth Lingering Over</h3>
+          <p>From a crisp Pinot Grigio with the pasta to a structured Barolo with the steak — our team helps you find the bottle that makes the evening feel inevitable.</p>
+        </div>
+        <div class="pillar" data-reveal data-delay="4">
+          <span class="pillar-icon">🌿</span>
+          <h3>Garden Ambiance, Kololo Nights</h3>
+          <p>Soft candlelight, open sky, and the kind of quiet that makes conversation come easily. Our garden is why couples return for every occasion that matters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       SOCIAL PROOF — Trust
+  ═════════════════════════════════════════════════════════════ -->
   <section id="proof">
     <div class="container">
-      <div class="proof-grid reveal">
-        <div class="proof-stat">
-          <div class="number">4.4★</div>
-          <div class="desc">Average Google Rating<br>across 1,000+ reviews</div>
+      <!-- Hard numbers first — fast credibility -->
+      <div class="stats-row" data-reveal>
+        <div class="stat">
+          <div class="stat-num">4.4★</div>
+          <div class="stat-label">Average rating<br>across 1,000+ Google reviews</div>
         </div>
-        <div class="proof-vline"></div>
-        <div class="proof-stat">
-          <div class="number">10+</div>
-          <div class="desc">Years serving Kampala's<br>finest dining experiences</div>
+        <div class="stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years serving<br>Kampala's finest tables</div>
         </div>
-        <div class="proof-vline"></div>
-        <div class="proof-stat">
-          <div class="number">100%</div>
-          <div class="desc">Handmade pasta &<br>fresh imported ingredients</div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Handmade pasta<br>from scratch, every morning</div>
         </div>
+      </div>
+
+      <div class="proof-head" data-reveal>
+        <span class="label">What Our Guests Say</span>
+        <h2>Words from the Table</h2>
       </div>
 
       <div class="testimonials">
-        <div class="testimonial-card reveal reveal-delay-1">
-          <div class="t-quote">"</div>
-          <p class="t-text">The T-Bone here is the best steak I've had in East Africa — perfectly marbled, cooked exactly to my specification, with a sauce that deserved its own applause. We'll be back for every anniversary.</p>
-          <div class="t-meta">
-            <div class="t-avatar">A</div>
+        <div class="tcard" data-reveal data-delay="1">
+          <span class="tcard-quote">"</span>
+          <p class="tcard-text">I've eaten steak across four continents. The T-Bone at Cantine Divino holds its own against any of them. The char, the rest time, the sauce — everything about it tells you someone cares deeply about this.</p>
+          <div class="tcard-footer">
+            <div class="tcard-avatar">A</div>
             <div>
-              <div class="t-name">Amara K. — Kampala</div>
-              <div class="t-stars">★★★★★</div>
+              <div class="tcard-name">Amara K.</div>
+              <div class="tcard-meta">Kampala · Business Dinner</div>
             </div>
+            <div class="tcard-stars">★★★★★</div>
           </div>
         </div>
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="t-quote">"</div>
-          <p class="t-text">From the candlelit garden to the sommelier's wine pairing, everything felt considered and intentional. The truffle pasta alone is worth the drive from Ntinda. Genuinely world-class.</p>
-          <div class="t-meta">
-            <div class="t-avatar">R</div>
+        <div class="tcard" data-reveal data-delay="2">
+          <span class="tcard-quote">"</span>
+          <p class="tcard-text">We brought our anniversary here on a friend's recommendation and ended up returning three times in two months. The garden, the wine, the way the staff quietly anticipate what you need — it feels like being in Italy.</p>
+          <div class="tcard-footer">
+            <div class="tcard-avatar">R</div>
             <div>
-              <div class="t-name">Rafael M. — Kololo</div>
-              <div class="t-stars">★★★★★</div>
+              <div class="tcard-name">Rehema & James O.</div>
+              <div class="tcard-meta">Kololo · Date Night</div>
             </div>
+            <div class="tcard-stars">★★★★★</div>
           </div>
         </div>
-        <div class="testimonial-card reveal reveal-delay-3">
-          <div class="t-quote">"</div>
-          <p class="t-text">We brought our European clients here and they were speechless. The wine list rivals restaurants in Rome. Cantine Divino isn't just the best in Kampala — it's simply exceptional dining, full stop.</p>
-          <div class="t-meta">
-            <div class="t-avatar">N</div>
+        <div class="tcard" data-reveal data-delay="3">
+          <span class="tcard-quote">"</span>
+          <p class="tcard-text">We entertain European clients regularly and Cantine Divino is the only place in Kampala where I don't have to make excuses for the wine list. The Barolo pairing suggestion alone impressed the entire room.</p>
+          <div class="tcard-footer">
+            <div class="tcard-avatar">N</div>
             <div>
-              <div class="t-name">Nakato S. — Business Diner</div>
-              <div class="t-stars">★★★★★</div>
+              <div class="tcard-name">Nakato S.</div>
+              <div class="tcard-meta">Kampala · Client Entertainment</div>
             </div>
+            <div class="tcard-stars">★★★★★</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       ABOUT / EXPERIENCE
-       Story-first: gives the restaurant personality and differentiates
-       from generic fine-dining. The overlapping image layout signals
-       premium production values visually.
-  ============================================================ -->
+  <!-- ════════════════════════════════════════════════════════════
+       ABOUT / STORY — Who we are
+  ═════════════════════════════════════════════════════════════ -->
   <section id="about">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-imagery reveal">
-          <img
-            class="about-img-main"
-            src="https://otwiine.github.io/Cantine-Divino/media/images/pasta_wine.png"
-            alt="Pasta and wine at Cantine Divino"
-          />
-          <img
-            class="about-img-accent"
-            src="https://otwiine.github.io/Cantine-Divino/media/images/food.png"
-            alt="Gourmet dish at Cantine Divino"
-          />
+      <div class="about-grid" data-reveal>
+        <div class="about-visual">
+          <img class="about-img-main" src="https://otwiine.github.io/Cantine-Divino/media/images/pasta_wine.png" alt="Cantine Divino dining experience" />
           <div class="about-badge">
-            <span class="badge-num">10+</span>
-            <span class="badge-txt">Years of<br>Excellence</span>
+            <span class="about-badge-num">10+</span>
+            <span class="about-badge-txt">Years of<br>Excellence</span>
           </div>
         </div>
-        <div class="about-text reveal reveal-delay-1">
-          <span class="section-label">Our Story</span>
-          <h2>Kampala Deserves a Table <em>Worth Dressing For</em></h2>
+        <div class="about-body">
+          <span class="label">Our Story</span>
+          <h2>Not Trying<br />to Be Italian.<br /><em>Simply Is.</em></h2>
           <p>
-            Cantine Divino was born from a simple conviction: that Kampala's growing appetite for genuine luxury deserved more than hotel buffets and imported mediocrity.
+            Cantine Divino was founded on a conviction Kampala's growing appetite for genuine luxury dining deserved more than hotel restaurants and imported mediocrity.
           </p>
           <p>
-            Tucked into a candlelit garden on Mabua Road in Kololo, we've spent over a decade perfecting the marriage of Italian culinary tradition and East African warmth. Our pasta is shaped by hand each morning. Our steaks are sourced for marbling, not just weight. Our wine list is built by people who've walked the vineyards.
+            Tucked into a candlelit garden on Mabua Road in Kololo, we've spent over a decade building something that doesn't need explaining — a place where the pasta is shaped by hand every morning, the steaks are chosen for marbling and not just weight, and the wine list reflects someone who has actually walked the Italian vineyards.
           </p>
-          <p>
-            This is not a restaurant that tries to be Italian. It simply is.
-          </p>
-          <div class="about-features">
-            <div class="about-feature">
-              <span class="feature-icon">◆</span>
-              <div class="feature-label">
-                <strong>Garden Ambiance</strong>
-                Candlelit evenings under open skies, designed for intimacy
-              </div>
+          <div class="about-attrs">
+            <div class="about-attr">
+              <div class="attr-bullet"></div>
+              Handmade pasta prepared fresh each morning from imported semolina
             </div>
-            <div class="about-feature">
-              <span class="feature-icon">◆</span>
-              <div class="feature-label">
-                <strong>Italian Technique</strong>
-                Time-honoured recipes, imported ingredients, no shortcuts
-              </div>
+            <div class="about-attr">
+              <div class="attr-bullet"></div>
+              Prime steaks sourced for marbling, dry-aged on site
             </div>
-            <div class="about-feature">
-              <span class="feature-icon">◆</span>
-              <div class="feature-label">
-                <strong>Sommelier-Curated Wine</strong>
-                Italian & international labels selected for the table, not the shelf
-              </div>
+            <div class="about-attr">
+              <div class="attr-bullet"></div>
+              Italian and international wines, sommelier-curated
             </div>
-            <div class="about-feature">
-              <span class="feature-icon">◆</span>
-              <div class="feature-label">
-                <strong>Live Jazz Fridays</strong>
-                Resident musicians who understand that dinner has a soundtrack
-              </div>
+            <div class="about-attr">
+              <div class="attr-bullet"></div>
+              Private dining available for events, celebrations, and corporate meals
             </div>
           </div>
-          <a href="#reserve" class="btn btn-primary">Book an Evening</a>
+          <a href="#reserve" class="btn btn-gold">Book an Evening</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       SIGNATURE OFFERINGS
-       Three hero categories — each with a full-bleed image that
-       communicates premium before the text is even read.
-  ============================================================ -->
+  <!-- ════════════════════════════════════════════════════════════
+       OFFERINGS — Three visual pillars
+  ═════════════════════════════════════════════════════════════ -->
   <section id="offerings">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="section-label">What We Do Best</span>
-        <h2>Three Passions.<br>One Table.</h2>
-        <p>We don't do everything. We do three things with obsessive precision — and each one earns its place on your plate.</p>
+      <div class="offerings-header" data-reveal>
+        <span class="label">What We Do Best</span>
+        <h2>Three Things. Done Obsessively Well.</h2>
+        <p>We don't attempt everything. We master three things — and each one earns its place at your table.</p>
       </div>
     </div>
     <div class="offerings-grid">
-      <div class="offering-card reveal">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/steak.png" alt="Premium steak at Cantine Divino" />
-        <div class="offering-overlay">
-          <span class="offering-tag">Signature · Aged Cuts</span>
-          <h3>Fire & Patience</h3>
-          <p class="offering-desc">
-            We source only prime cuts — T-bones, ribeyes, and sirloin — dry-aged to develop flavour depth you can taste in the first bite. Charcoal-finished, rested properly, served with reverence.
-          </p>
+      <div class="offer-card" data-reveal data-delay="1">
+        <img src="https://otwiine.github.io/Cantine-Divino/media/images/steak.png" alt="Dry-aged prime steak" loading="lazy" />
+        <div class="offer-overlay">
+          <span class="offer-tag">Signature · The Grill</span>
+          <h3>Aged Beef,<br/>Honest Fire</h3>
+          <p class="offer-desc">Prime T-bones and ribeyes, dry-aged for depth of flavour and finished over real charcoal. Rested properly. Plated without pretension. This is the steak Kampala talks about.</p>
+          <a href="#reserve" class="offer-cta-link">Reserve to experience →</a>
         </div>
       </div>
-      <div class="offering-card reveal reveal-delay-1">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/pasta.png" alt="Handmade Italian pasta" />
-        <div class="offering-overlay">
-          <span class="offering-tag">From Scratch · Every Morning</span>
-          <h3>La Pasta</h3>
-          <p class="offering-desc">
-            No dried packets. No shortcuts. Our pasta is hand-rolled each morning from semolina and farm eggs. Tossed with imported DOP ingredients and sauces that take all day to earn their depth.
-          </p>
+      <div class="offer-card" data-reveal data-delay="2">
+        <img src="https://otwiine.github.io/Cantine-Divino/media/images/pasta.png" alt="Handmade Italian pasta" loading="lazy" />
+        <div class="offer-overlay">
+          <span class="offer-tag">Classic · Handmade Daily</span>
+          <h3>La Pasta.<br/>No Shortcuts.</h3>
+          <p class="offer-desc">Hand-rolled from semolina and farm eggs every morning. Tossed with DOP sauces built over hours. The kind of pasta that makes you stop mid-bite and say nothing.</p>
+          <a href="#reserve" class="offer-cta-link">Reserve to experience →</a>
         </div>
       </div>
-      <div class="offering-card reveal reveal-delay-2">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/drinks.png" alt="Fine wines at Cantine Divino" />
-        <div class="offering-overlay">
-          <span class="offering-tag">Italian & International · Cellar</span>
-          <h3>The Wine Experience</h3>
-          <p class="offering-desc">
-            From Barolo to Brunello, from Prosecco to Primitivo — our cellar is a love letter to the Italian regions. Our team pairs every glass to your meal, not just your budget.
-          </p>
+      <div class="offer-card" data-reveal data-delay="3">
+        <img src="https://otwiine.github.io/Cantine-Divino/media/images/drinks.png" alt="Italian wine cellar" loading="lazy" />
+        <div class="offer-overlay">
+          <span class="offer-tag">Cellar · Italian & International</span>
+          <h3>Wine That<br/>Earns the Night</h3>
+          <p class="offer-desc">From Barolo to Brunello, Prosecco to Primitivo — our cellar is a love letter to the Italian regions. Our team pairs every bottle to your table, not just your budget.</p>
+          <a href="#reserve" class="offer-cta-link">Reserve to experience →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       MENU PREVIEW
-       Tabbed layout hints at depth without overwhelming.
-       Pricing is deliberately omitted — premium restaurants lead
-       with experience, not cost.
-  ============================================================ -->
+  <!-- ════════════════════════════════════════════════════════════
+       MENU — Selling tool with pricing
+  ═════════════════════════════════════════════════════════════ -->
   <section id="menu">
     <div class="container">
-      <div class="section-head">
-        <div class="section-head-left reveal">
-          <span class="section-label">On The Menu</span>
-          <h2>A Selection Worth<br>Planning an Evening For</h2>
+      <div class="menu-head">
+        <div class="menu-head-left" data-reveal>
+          <span class="label">On the Menu</span>
+          <h2>Dishes Worth Planning<br/>an Evening For</h2>
         </div>
-        <div class="menu-tabs reveal reveal-delay-1">
-          <button class="menu-tab active">All</button>
-          <button class="menu-tab">Steaks</button>
-          <button class="menu-tab">Pasta</button>
-          <button class="menu-tab">Drinks</button>
-        </div>
-      </div>
-
-      <div class="menu-items">
-        <div class="menu-item reveal">
-          <img class="menu-item-img" src="https://otwiine.github.io/Cantine-Divino/media/images/steak.png" alt="T-Bone Steak" />
-          <div class="menu-item-info">
-            <div class="menu-item-tag">Signature · Grill</div>
-            <h4>T-Bone Steak</h4>
-            <p>Prime-grade, charcoal-finished, served with seasonal grilled vegetables and our chef's reduction. The dish Cantine Divino is remembered for.</p>
-          </div>
-        </div>
-        <div class="menu-item reveal reveal-delay-1">
-          <img class="menu-item-img" src="https://otwiine.github.io/Cantine-Divino/media/images/cut_steak.png" alt="Lamb Chops" />
-          <div class="menu-item-info">
-            <div class="menu-item-tag">Chef's Selection</div>
-            <h4>Herb-Crusted Lamb Chops</h4>
-            <p>Tender cuts marinated in rosemary, garlic and lemon zest. Finished with a Chianti reduction that lingers long after the last bite.</p>
-          </div>
-        </div>
-        <div class="menu-item reveal reveal-delay-2">
-          <img class="menu-item-img" src="https://otwiine.github.io/Cantine-Divino/media/images/pasta.png" alt="House Pasta" />
-          <div class="menu-item-info">
-            <div class="menu-item-tag">Classic · Handmade</div>
-            <h4>House Pasta al Ragù</h4>
-            <p>Hand-rolled ribbons, slow-cooked meat ragù, Parmigiano Reggiano. A dish that takes eight hours to make and sixty seconds to decide to order again.</p>
-          </div>
-        </div>
-        <div class="menu-item reveal reveal-delay-1">
-          <img class="menu-item-img" src="https://otwiine.github.io/Cantine-Divino/media/images/food1.png" alt="Chef's special" />
-          <div class="menu-item-info">
-            <div class="menu-item-tag">Seasonal · Chef's Table</div>
-            <h4>Chef's Daily Special</h4>
-            <p>Market-driven, technique-focused, and entirely unrepeatable. Ask your server — this dish is the kitchen showing you what it's capable of on any given day.</p>
-          </div>
-        </div>
-        <div class="menu-item reveal">
-          <img class="menu-item-img" src="https://otwiine.github.io/Cantine-Divino/media/images/drink.png" alt="Cocktails" />
-          <div class="menu-item-info">
-            <div class="menu-item-tag">Bar · Craft</div>
-            <h4>Signature Cocktails</h4>
-            <p>Aperol Negronis, Limoncello Spritzes, house-aged Boulevardiers. Our bartenders treat every glass as a first impression.</p>
-          </div>
-        </div>
-        <div class="menu-item reveal reveal-delay-1">
-          <img class="menu-item-img" src="https://otwiine.github.io/Cantine-Divino/media/images/drink2.png" alt="Wine selection" />
-          <div class="menu-item-info">
-            <div class="menu-item-tag">Cellar · Italian</div>
-            <h4>Sommelier's Wine Pairing</h4>
-            <p>Let us match the bottle to your meal. From crisp Pinot Grigio to structured Barolo — our sommeliers know exactly which wine makes your dinner unforgettable.</p>
-          </div>
+        <div class="menu-filter" data-reveal data-delay="1">
+          <button class="mf-btn active">All</button>
+          <button class="mf-btn">Steaks</button>
+          <button class="mf-btn">Pasta</button>
+          <button class="mf-btn">Drinks</button>
         </div>
       </div>
 
-      <div class="menu-cta reveal">
-        <p>Our full menu changes seasonally. Speak with our team for dietary requirements, private dining menus, or group bookings.</p>
-        <a href="tel:+256700805000" class="btn btn-ghost" style="margin-right: 12px;">
-          Call for Menu Details
-        </a>
-        <a href="#reserve" class="btn btn-primary">Reserve a Table</a>
+      <div class="menu-grid" data-reveal>
+        <!-- Chef's badge on the hero dish — creates hierarchy + desire -->
+        <div class="menu-item">
+          <span class="chefs-badge">Chef's Signature</span>
+          <img class="menu-img" src="https://otwiine.github.io/Cantine-Divino/media/images/steak.png" alt="T-Bone Steak" loading="lazy" />
+          <div class="menu-info">
+            <div class="menu-tag">Grill · Aged Prime Cut</div>
+            <div class="menu-name">T-Bone Steak</div>
+            <div class="menu-desc">Charcoal-finished, rested, served with seasonal greens and our proprietary bone-marrow reduction. The dish Cantine Divino is remembered for.</div>
+          </div>
+          <div class="menu-price">UGX 85,000<br/><span style="font-size:0.65rem; color: var(--smoke); font-family: Jost">per person</span></div>
+        </div>
+
+        <div class="menu-item">
+          <img class="menu-img" src="https://otwiine.github.io/Cantine-Divino/media/images/cut_steak.png" alt="Herb-Crusted Lamb Chops" loading="lazy" />
+          <div class="menu-info">
+            <div class="menu-tag">Chef's Selection · Grill</div>
+            <div class="menu-name">Herb-Crusted Lamb Chops</div>
+            <div class="menu-desc">Marinated in rosemary, garlic and preserved lemon. Finished with a Chianti reduction that lingers on the palate long after the plate is cleared.</div>
+          </div>
+          <div class="menu-price">UGX 72,000<br/><span style="font-size:0.65rem; color: var(--smoke); font-family: Jost">per person</span></div>
+        </div>
+
+        <div class="menu-item">
+          <img class="menu-img" src="https://otwiine.github.io/Cantine-Divino/media/images/pasta.png" alt="House Pasta al Ragù" loading="lazy" />
+          <div class="menu-info">
+            <div class="menu-tag">Classic · Handmade</div>
+            <div class="menu-name">House Pasta al Ragù</div>
+            <div class="menu-desc">Hand-rolled ribbons. Eight-hour slow-cooked meat ragù. Parmigiano Reggiano. A dish that takes a day to make and sixty seconds to decide to order again.</div>
+          </div>
+          <div class="menu-price">UGX 38,000<br/><span style="font-size:0.65rem; color: var(--smoke); font-family: Jost">per person</span></div>
+        </div>
+
+        <div class="menu-item">
+          <img class="menu-img" src="https://otwiine.github.io/Cantine-Divino/media/images/food1.png" alt="Chef's Daily Special" loading="lazy" />
+          <div class="menu-info">
+            <div class="menu-tag">Seasonal · Market Driven</div>
+            <div class="menu-name">Chef's Daily Special</div>
+            <div class="menu-desc">Market-sourced, entirely unrepeatable. This is the kitchen unscripted — ask your server. The table next to you will order it the moment they hear what it is.</div>
+          </div>
+          <div class="menu-price">Market<br/><span style="font-size:0.65rem; color: var(--smoke); font-family: Jost">price</span></div>
+        </div>
+
+        <div class="menu-item">
+          <img class="menu-img" src="https://otwiine.github.io/Cantine-Divino/media/images/drink.png" alt="Signature Cocktails" loading="lazy" />
+          <div class="menu-info">
+            <div class="menu-tag">Bar · Craft Cocktails</div>
+            <div class="menu-name">Signature Cocktails</div>
+            <div class="menu-desc">Aperol Negronis. Limoncello Spritzes. House-aged Boulevardiers. Each glass is built as carefully as the first impression it makes.</div>
+          </div>
+          <div class="menu-price">UGX 22,000+<br/><span style="font-size:0.65rem; color: var(--smoke); font-family: Jost">per glass</span></div>
+        </div>
+
+        <div class="menu-item">
+          <img class="menu-img" src="https://otwiine.github.io/Cantine-Divino/media/images/drink2.png" alt="Wine Pairing" loading="lazy" />
+          <div class="menu-info">
+            <div class="menu-tag">Cellar · Sommelier Curated</div>
+            <div class="menu-name">Wine Pairing Service</div>
+            <div class="menu-desc">Tell us your meal, and let our sommelier select the perfect bottle. From crisp Pinot Grigio to structured Barolo — the right wine makes everything taste better.</div>
+          </div>
+          <div class="menu-price">UGX 45,000+<br/><span style="font-size:0.65rem; color: var(--smoke); font-family: Jost">per bottle</span></div>
+        </div>
+      </div>
+
+      <div class="menu-cta-wrap" data-reveal>
+        <p>Our full menu changes seasonally. Speak with our team about dietary requirements, group menus, or private dining.</p>
+        <div class="menu-cta-btns">
+          <a href="tel:+256700805000" class="btn btn-outline">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+            Call for Full Menu
+          </a>
+          <a href="#reserve" class="btn btn-gold">Reserve Your Table</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
+  <!-- ════════════════════════════════════════════════════════════
        GALLERY
-       Masonry-style grid shows atmosphere, food, bar, and kitchen.
-       Images do the selling — copy stays minimal here.
-  ============================================================ -->
+  ═════════════════════════════════════════════════════════════ -->
   <section id="gallery">
-    <div class="gallery-header reveal">
-      <div class="container">
-        <span class="section-label">Gallery</span>
-        <h2>See the Experience<br><em>Before You Arrive</em></h2>
+    <div class="container">
+      <div class="gallery-head" data-reveal>
+        <span class="label">Gallery</span>
+        <h2>See the Evening<br /><em>Before You Arrive</em></h2>
       </div>
     </div>
     <div class="gallery-grid">
-      <div class="g-item g1">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/ambiance.png" alt="Cantine Divino ambiance" loading="lazy" />
-      </div>
-      <div class="g-item g2">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/steak2.png" alt="Grilled steak" loading="lazy" />
-      </div>
-      <div class="g-item g3">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/pasta_wine.png" alt="Pasta and wine" loading="lazy" />
-      </div>
-      <div class="g-item g4">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/drink.png" alt="Cocktail" loading="lazy" />
-      </div>
-      <div class="g-item g5">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/chair.png" alt="Dining seating" loading="lazy" />
-      </div>
-      <div class="g-item g6">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/food1.png" alt="Gourmet dish" loading="lazy" />
-      </div>
-      <div class="g-item g7">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/table.png" alt="Dining table" loading="lazy" />
-      </div>
-      <div class="g-item g8">
-        <img src="https://otwiine.github.io/Cantine-Divino/media/images/food.png" alt="Italian dish" loading="lazy" />
+      <div class="g g-1"><img src="https://otwiine.github.io/Cantine-Divino/media/images/ambiance.png" alt="Cantine Divino ambiance" loading="lazy" /></div>
+      <div class="g g-2"><img src="https://otwiine.github.io/Cantine-Divino/media/images/steak2.png" alt="Grilled steak" loading="lazy" /></div>
+      <div class="g g-3"><img src="https://otwiine.github.io/Cantine-Divino/media/images/food.png" alt="Italian food" loading="lazy" /></div>
+      <div class="g g-4"><img src="https://otwiine.github.io/Cantine-Divino/media/images/drink.png" alt="Cocktail" loading="lazy" /></div>
+      <div class="g g-5"><img src="https://otwiine.github.io/Cantine-Divino/media/images/pasta_wine.png" alt="Pasta and wine" loading="lazy" /></div>
+      <div class="g g-6"><img src="https://otwiine.github.io/Cantine-Divino/media/images/chair.png" alt="Dining seating" loading="lazy" /></div>
+      <div class="g g-7"><img src="https://otwiine.github.io/Cantine-Divino/media/images/table.png" alt="Dining table" loading="lazy" /></div>
+      <div class="g g-8"><img src="https://otwiine.github.io/Cantine-Divino/media/images/food1.png" alt="Gourmet dish" loading="lazy" /></div>
+    </div>
+
+    <!-- Jazz band interlude below gallery -->
+    <div class="jazz-band">
+      <div class="container">
+        <div class="jazz-inner">
+          <div class="jazz-left">
+            <span class="jazz-icon">🎷</span>
+            <div class="jazz-copy">
+              <h3>Live Jazz, Every Friday Evening</h3>
+              <p>Our resident ensemble plays from 7 PM. Soft brass, candlelight, and a Barolo — the kind of Friday night you come back for.</p>
+            </div>
+          </div>
+          <a href="#reserve" class="btn btn-gold">Book a Jazz Night</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Jazz strip — quick callout, breaks gallery monotony -->
-  <div class="jazz-strip">
-    <div class="jazz-note">♩</div>
-    <div class="jazz-content">
-      <span class="section-label">Live Entertainment</span>
-      <h3>Jazz Nights at Cantine Divino</h3>
-      <p>
-        Every Friday evening, our resident jazz ensemble transforms dinner into an experience. Soft brass, brushed percussion, and candlelight — the kind of evening that makes Kampala feel like Milan.
-      </p>
-    </div>
-    <a href="#reserve" class="btn btn-primary">Book a Jazz Night</a>
-  </div>
-
-  <!-- ============================================================
-       LOCATION
-       Practical information — critical for conversion.
-       Map iframe in dark mode (CSS filter trick) maintains aesthetic.
-  ============================================================ -->
+  <!-- ════════════════════════════════════════════════════════════
+       LOCATION — Practical trust section
+  ═════════════════════════════════════════════════════════════ -->
   <section id="location">
     <div class="container">
-      <div class="location-grid">
-        <div class="location-info reveal">
-          <span class="section-label">Find Us</span>
-          <h2>In the Heart of<br>Kololo, Kampala</h2>
+      <div class="loc-grid">
+        <div class="loc-info" data-reveal>
+          <span class="label">Find Us</span>
+          <h2>In Kololo,<br/>Where Every<br/>Evening Belongs</h2>
 
-          <div class="info-block">
-            <div class="info-block-label">Address</div>
-            <div class="info-block-value">
-              Mabua Road, Kololo<br>
-              Kampala, Uganda
-            </div>
+          <div class="info-row">
+            <div class="info-row-label">Address</div>
+            <div class="info-row-value">Mabua Road, Kololo<br/>Kampala, Uganda</div>
           </div>
 
-          <div class="info-block">
-            <div class="info-block-label">Phone</div>
-            <div class="info-block-value">
+          <div class="info-row">
+            <div class="info-row-label">Phone & WhatsApp</div>
+            <div class="info-row-value">
               <a href="tel:+256700805000">+256 700 805 000</a>
             </div>
           </div>
 
-          <div class="info-block">
-            <div class="info-block-label">Opening Hours</div>
-            <div class="info-block-value">
-              <div class="hours-row">
-                <span class="day">Monday – Thursday</span>
-                <span class="time">9:00 AM – 10:00 PM</span>
+          <div class="info-row">
+            <div class="info-row-label">Hours</div>
+            <div class="info-row-value">
+              <div class="hours-list">
+                <div class="hour-row">
+                  <span class="hour-day">Monday – Thursday</span>
+                  <span class="hour-time">9:00 AM – 10:00 PM</span>
+                </div>
+                <div class="hour-row">
+                  <span class="hour-day">Friday – Saturday</span>
+                  <span class="hour-time">9:00 AM – 11:00 PM</span>
+                </div>
+                <div class="hour-row">
+                  <span class="hour-day">Sunday</span>
+                  <span class="hour-time">10:00 AM – 10:00 PM</span>
+                </div>
               </div>
-              <div class="hours-row">
-                <span class="day">Friday – Saturday</span>
-                <span class="time">9:00 AM – 11:00 PM</span>
-              </div>
-              <div class="hours-row">
-                <span class="day">Sunday</span>
-                <span class="time">10:00 AM – 10:00 PM</span>
-              </div>
+              <p style="font-size:0.72rem; color:var(--gold); margin-top:12px; font-weight:500;">
+                ⓘ&nbsp; Weekend evenings fill early. We recommend booking 3–5 days ahead.
+              </p>
             </div>
           </div>
 
-          <div class="info-block">
-            <div class="info-block-label">Follow the Experience</div>
-            <div class="social-links">
-              <a href="https://www.instagram.com/cantinedivino.ug/" target="_blank" class="social-link">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-                Instagram
-              </a>
-              <a href="https://www.facebook.com/cantinedivino.ug/" target="_blank" class="social-link">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                Facebook
-              </a>
-            </div>
-          </div>
-          <div style="margin-top: 28px;">
-            <a href="tel:+256700805000" class="btn btn-primary">
+          <div class="loc-actions">
+            <a href="tel:+256700805000" class="btn btn-gold">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
               Call Now
             </a>
+            <a href="https://wa.me/256700805000?text=Hello%2C%20I'd%20like%20to%20book%20a%20table%20at%20Cantine%20Divino" target="_blank" class="btn btn-whatsapp">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Book on WhatsApp
+            </a>
+            <a href="https://www.google.com/maps/search/Cantine+Divino+Kampala" target="_blank" class="btn btn-outline">Open in Google Maps</a>
           </div>
         </div>
 
-        <div class="map-container reveal reveal-delay-1">
-          <!-- Dark-filtered Google Maps embed (Mabua Road, Kololo, Kampala) -->
+        <div class="map-box" data-reveal data-delay="2">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7566254835!2d32.5898!3d0.3362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb6e6e6e6e6f%3A0x6e6e6e6e6e6e6e6e!2sMabua%20Rd%2C%20Kampala!5e0!3m2!1sen!2sug!4v1234567890"
-            allowfullscreen=""
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.745!2d32.590!3d0.340!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb0000000001%3A0x1!2sMabua%20Rd%2C%20Kololo%2C%20Kampala!5e0!3m2!1sen!2sug!4v1234567890"
+            allowfullscreen
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Cantine Divino location map"
-          ></iframe>
+            title="Cantine Divino on Google Maps">
+          </iframe>
+          <a href="https://www.google.com/maps/search/Cantine+Divino+Kampala" target="_blank" class="map-overlay-btn">Open Full Map →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       FINAL CTA — RESERVATION
-       Repeating the reservation CTA at the bottom captures intent
-       generated by reading the entire page. Form + phone = two
-       channels for different customer preferences.
-  ============================================================ -->
+  <!-- ════════════════════════════════════════════════════════════
+       RESERVATION SECTION — Final, strongest CTA
+       Three paths: form, phone, WhatsApp. Every customer type served.
+  ═════════════════════════════════════════════════════════════ -->
   <section id="reserve">
     <div class="reserve-bg"></div>
     <div class="container">
-      <div class="reserve-content">
-        <div class="reserve-left reveal">
-          <span class="section-label">Reserve Your Table</span>
-          <h2>Your Evening<br>Begins <em>Here</em></h2>
+      <div class="reserve-inner">
+        <!-- Left: Emotional copy + perks -->
+        <div class="reserve-left" data-reveal>
+          <span class="label">Reserve Your Table</span>
+          <h2>Your Evening<br />Starts<br /><em>Right Here.</em></h2>
           <p>
-            Whether it's a quiet dinner for two, a celebration with close friends, or an important business meal — Cantine Divino delivers the kind of evening that earns the story you'll tell for years.
+            Whether it's a quiet dinner for two, a celebration with close friends, or an important business meal that needs to impress — Cantine Divino delivers the kind of evening you'll talk about long after the last glass.
           </p>
-          <div class="reserve-highlights">
-            <div class="reserve-highlight">
-              <div class="dot"></div>
-              <span>Complimentary welcome drink for reservations of 4+</span>
+          <div class="reserve-perks">
+            <div class="perk">
+              <span class="perk-icon">◆</span>
+              Complimentary welcome drink for reservations of 4 or more guests
             </div>
-            <div class="reserve-highlight">
-              <div class="dot"></div>
-              <span>Private dining available for events and celebrations</span>
+            <div class="perk">
+              <span class="perk-icon">◆</span>
+              Private dining room available for events, proposals, and celebrations
             </div>
-            <div class="reserve-highlight">
-              <div class="dot"></div>
-              <span>Dietary requirements accommodated with advance notice</span>
+            <div class="perk">
+              <span class="perk-icon">◆</span>
+              Dietary requirements and special menus available with advance notice
             </div>
-            <div class="reserve-highlight">
-              <div class="dot"></div>
-              <span>Wine pairing consultation available upon request</span>
+            <div class="perk">
+              <span class="perk-icon">◆</span>
+              Sommelier wine pairing consultation on request — no extra charge
+            </div>
+          </div>
+          <div class="reserve-contact-alts">
+            <div class="alt-label">Prefer not to fill a form?</div>
+            <div style="display:flex; gap:10px; flex-wrap: wrap;">
+              <a href="tel:+256700805000" class="btn btn-outline" style="padding: 12px 22px; font-size:0.65rem;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+                Call Directly
+              </a>
+              <a href="https://wa.me/256700805000?text=Hello%2C%20I'd%20like%20to%20book%20a%20table%20at%20Cantine%20Divino" target="_blank" class="btn btn-whatsapp" style="padding: 12px 22px; font-size:0.65rem;">
+                WhatsApp Us
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- Reservation form — the primary conversion element -->
-        <div class="reserve-form reveal reveal-delay-1">
-          <h3>Make a Reservation</h3>
-          <p class="form-sub">We'll confirm your booking within 2 hours. Prefer to call? <a href="tel:+256700805000" style="color: var(--gold);">+256 700 805 000</a></p>
-          <div class="form-row">
+        <!-- Right: Reservation form -->
+        <div class="reserve-form-card" data-reveal data-delay="2">
+          <div class="form-title">Make a Reservation</div>
+          <p class="form-sub">We confirm within 2 hours. Prefer to call? <a href="tel:+256700805000">+256 700 805 000</a></p>
+
+          <div class="form-2col">
             <div class="form-group">
-              <label for="fname">Full Name</label>
-              <input type="text" id="fname" placeholder="Your name" />
+              <label class="form-label" for="r_name">Full Name</label>
+              <input class="form-control" type="text" id="r_name" placeholder="Your name" />
             </div>
             <div class="form-group">
-              <label for="fphone">Phone Number</label>
-              <input type="tel" id="fphone" placeholder="+256..." />
+              <label class="form-label" for="r_phone">Phone Number</label>
+              <input class="form-control" type="tel" id="r_phone" placeholder="+256..." />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="r_email">Email Address</label>
+              <input class="form-control" type="email" id="r_email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="r_date">Date</label>
+              <input class="form-control" type="date" id="r_date" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="r_time">Time</label>
+              <div class="form-select-wrap">
+                <select class="form-control" id="r_time">
+                  <option value="">Select time</option>
+                  <option>12:00 PM – Lunch</option>
+                  <option>1:00 PM</option>
+                  <option>6:30 PM</option>
+                  <option>7:00 PM</option>
+                  <option>7:30 PM – Prime Evening</option>
+                  <option>8:00 PM</option>
+                  <option>8:30 PM</option>
+                  <option>9:00 PM</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="r_guests">Guests</label>
+              <div class="form-select-wrap">
+                <select class="form-control" id="r_guests">
+                  <option value="">Number of guests</option>
+                  <option>1 Guest</option>
+                  <option>2 Guests</option>
+                  <option>3 Guests</option>
+                  <option>4 Guests</option>
+                  <option>5 – 8 Guests</option>
+                  <option>9+ (Private Event)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="r_occasion">Occasion</label>
+              <div class="form-select-wrap">
+                <select class="form-control" id="r_occasion">
+                  <option value="">Optional</option>
+                  <option>Anniversary</option>
+                  <option>Birthday</option>
+                  <option>Business Dinner</option>
+                  <option>Date Night</option>
+                  <option>Celebration</option>
+                  <option>Just Dining</option>
+                </select>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <label for="femail">Email Address</label>
-            <input type="email" id="femail" placeholder="your@email.com" />
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fdate">Preferred Date</label>
-              <input type="date" id="fdate" />
-            </div>
-            <div class="form-group">
-              <label for="ftime">Preferred Time</label>
-              <select id="ftime">
-                <option value="">Select time</option>
-                <option>12:00 PM – Lunch</option>
-                <option>1:00 PM</option>
-                <option>6:00 PM – Early Evening</option>
-                <option>7:00 PM</option>
-                <option>7:30 PM</option>
-                <option>8:00 PM – Prime Dinner</option>
-                <option>8:30 PM</option>
-                <option>9:00 PM</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fguests">Number of Guests</label>
-              <select id="fguests">
-                <option value="">Guests</option>
-                <option>1 Guest</option>
-                <option>2 Guests</option>
-                <option>3 Guests</option>
-                <option>4 Guests</option>
-                <option>5–8 Guests</option>
-                <option>9+ (Private Event)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="foccasion">Occasion (Optional)</label>
-              <select id="foccasion">
-                <option value="">Select</option>
-                <option>Anniversary</option>
-                <option>Birthday</option>
-                <option>Business Dinner</option>
-                <option>Date Night</option>
-                <option>Celebration</option>
-                <option>Just Dining</option>
-              </select>
-            </div>
-          </div>
-          <button class="btn btn-primary form-submit" onclick="submitReservation()">
+
+          <button class="btn btn-gold form-submit" onclick="submitForm()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
             Confirm Reservation Request
           </button>
-          <p class="form-note">No payment required. We'll confirm by phone or email within 2 hours.</p>
+          <p class="form-guarantee">
+            🔒 No payment required &nbsp;·&nbsp; We confirm within 2 hours &nbsp;·&nbsp; Cancellations welcome
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Phone CTA strip — for mobile users who won't fill a form -->
-  <div class="call-strip">
-    <p>Prefer to reserve by phone?</p>
-    <a href="tel:+256700805000">+256 700 805 000</a>
+  <!-- Direct phone band — for mobile users, highest-intent path -->
+  <div class="phone-band">
+    <div class="phone-band-label">Prefer to reserve by phone?</div>
+    <a href="tel:+256700805000" class="phone-band-num">+256 700 805 000</a>
   </div>
 
-  <!-- ============================================================
+  <!-- ════════════════════════════════════════════════════════════
        FOOTER
-  ============================================================ -->
+  ═════════════════════════════════════════════════════════════ -->
   <footer>
     <div class="container">
-      <div class="footer-inner">
+      <div class="footer-grid">
         <div class="footer-brand">
           <img src="https://otwiine.github.io/Cantine-Divino/media/images/logo.jpg" alt="Cantine Divino" />
-          <p>Kampala's finest Italian dining experience. Authentic cuisine, premium steaks, and curated wines in an intimate garden setting in Kololo.</p>
+          <p>Kampala's most celebrated Italian dining experience. Handmade pasta, prime steaks, curated wines, and a candlelit garden in the heart of Kololo.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/cantinedivino.ug/" target="_blank" class="social-pill">Instagram</a>
+            <a href="https://www.facebook.com/cantinedivino.ug/" target="_blank" class="social-pill">Facebook</a>
+          </div>
         </div>
         <div class="footer-col">
           <h4>Navigate</h4>
           <ul>
+            <li><a href="#experience">The Experience</a></li>
             <li><a href="#about">Our Story</a></li>
-            <li><a href="#offerings">What We Offer</a></li>
-            <li><a href="#menu">Menu Highlights</a></li>
+            <li><a href="#menu">Menu</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#reserve">Reservations</a></li>
+            <li><a href="#reserve">Reserve</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Hours</h4>
           <ul>
-            <li><a>Mon – Thu: 9 AM – 10 PM</a></li>
-            <li><a>Fri – Sat: 9 AM – 11 PM</a></li>
-            <li><a>Sunday: 10 AM – 10 PM</a></li>
+            <li><span>Mon – Thu: 9 AM – 10 PM</span></li>
+            <li><span>Fri – Sat: 9 AM – 11 PM</span></li>
+            <li><span>Sunday: 10 AM – 10 PM</span></li>
+            <li><span style="color: var(--gold); margin-top:8px; display:block;">Open Every Day</span></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Connect</h4>
+          <h4>Contact</h4>
           <ul>
             <li><a href="tel:+256700805000">+256 700 805 000</a></li>
-            <li><a href="https://www.instagram.com/cantinedivino.ug/" target="_blank">Instagram</a></li>
-            <li><a href="https://www.facebook.com/cantinedivino.ug/" target="_blank">Facebook</a></li>
-            <li><a href="https://www.google.com/maps/search/Cantine+Divino+Kampala" target="_blank">Google Maps</a></li>
+            <li><a href="https://wa.me/256700805000" target="_blank">WhatsApp Booking</a></li>
+            <li><a href="https://www.instagram.com/cantinedivino.ug/" target="_blank">@cantinedivino.ug</a></li>
+            <li><span>Mabua Road, Kololo<br/>Kampala, Uganda</span></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p>© 2026 Cantine Divino. All rights reserved. · Mabua Road, Kololo, Kampala</p>
-        <p style="color: var(--gold); font-size: 0.7rem; letter-spacing: 0.08em;">
-          Kampala's Premier Italian Dining Experience
-        </p>
+        <span>Kampala's Premier Italian Restaurant</span>
       </div>
     </div>
   </footer>
 
-  <!-- ============================================================
-       JAVASCRIPT
-       Minimal: nav scroll effect, scroll reveal, mobile menu,
-       form submission feedback, menu tab switching
-  ============================================================ -->
+  <!-- ════════════════════════════════════════════════════════════
+       JAVASCRIPT — Lean, purposeful
+  ═════════════════════════════════════════════════════════════ -->
   <script>
-    // ── Nav scroll effect ──
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
+    // ── Nav: transparent → solid on scroll ──
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('solid', window.scrollY > 50);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
     // ── Scroll reveal ──
-    const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          e.target.classList.add('visible');
+          e.target.classList.add('in-view');
           observer.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => observer.observe(el));
+    }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
 
     // ── Mobile menu ──
-    function openMobileMenu() {
-      document.getElementById('mobileMenu').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMobileMenu() {
-      document.getElementById('mobileMenu').classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    const overlay = document.getElementById('mobileOverlay');
+    function openMobile()  { overlay.classList.add('open');  document.body.style.overflow = 'hidden'; }
+    function closeMobile() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
-    // ── Menu tab switching (visual only) ──
-    document.querySelectorAll('.menu-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
+    // ── Menu filter tabs (UI only) ──
+    document.querySelectorAll('.mf-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mf-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
       });
     });
 
-    // ── Reservation form submission ──
-    function submitReservation() {
-      const name = document.getElementById('fname').value.trim();
-      const phone = document.getElementById('fphone').value.trim();
+    // ── Date input: disable past dates ──
+    const dateInput = document.getElementById('r_date');
+    if (dateInput) {
+      dateInput.min = new Date().toISOString().split('T')[0];
+    }
+
+    // ── Form submission ──
+    function submitForm() {
+      const name  = document.getElementById('r_name').value.trim();
+      const phone = document.getElementById('r_phone').value.trim();
+      const date  = document.getElementById('r_date').value;
+      const time  = document.getElementById('r_time').value;
+
       if (!name || !phone) {
-        alert('Please enter your name and phone number so we can confirm your reservation.');
+        // Subtle visual validation — not an alert
+        ['r_name', 'r_phone'].forEach(id => {
+          const el = document.getElementById(id);
+          if (!el.value.trim()) {
+            el.style.borderColor = '#c0392b';
+            el.addEventListener('input', () => el.style.borderColor = '', { once: true });
+          }
+        });
         return;
       }
-      // In production, wire to Web3Forms, Netlify Forms, or a backend
-      alert(`Thank you, ${name}! Your reservation request has been received. We'll confirm via phone (${phone}) within 2 hours. See you soon at Cantine Divino.`);
-    }
 
-    // ── Set min date on date input ──
-    const dateInput = document.getElementById('fdate');
-    if (dateInput) {
-      const today = new Date().toISOString().split('T')[0];
-      dateInput.setAttribute('min', today);
+      // In production: POST to Web3Forms, Netlify Forms, or backend API
+      // Web3Forms integration: https://web3forms.com
+      const btn = event.target;
+      btn.textContent = '✓ Request Sent — We\'ll Call You Shortly';
+      btn.style.background = '#2d6a4f';
+      btn.style.pointerEvents = 'none';
     }
   </script>
-
 </body>
 </html>
