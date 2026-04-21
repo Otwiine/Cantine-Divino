@@ -1,0 +1,185 @@
+/* Design tokens */
+:root {
+    /* 60% — Surfaces (Vintage Parchment) */
+    --void:       #E8D9C5; /* Deepest neutral (Champagne) for contrast blocks */
+    --obsidian:   #FDF9F3; /* Main Page Background (Alabaster) */
+    --deep:       #F9F4F6; /* Section background with 1% Plum tint */
+    --surface:    #EFEBE0; /* Secondary neutral (Bone) */
+    --card:       #FFFFFF; /* Pure lift for menu items/cards */
+    --raised:     #E8D9C5; /* Accent surfaces */
+
+    /* 30% — Brand (The Divine Plum) */
+    --plum:       #522B64; /* Brand Primary */
+    --wine:       #522B64; /* Replacing Burgundy with Plum for consistency */
+    --wine-light: #734586; /* Lighter plum for hovers */
+    
+    /* 10% — Accent (Aged Gold) */
+    --gold:       #B8924A;
+    --gold-bright:#D4A85C;
+    --gold-pale:  #E8C87E;
+    --gold-dim:   rgba(82, 43, 100, 0.05); /* Tinted with brand plum */
+    --gold-glow:  rgba(184, 146, 74, 0.25);
+
+    /* Text (Inverted for light background) */
+    --ivory:      #1A131C; /* Main Body Text (Near-Black Plum) */
+    --cream:      #522B64; /* Sub-headings (Brand Plum) */
+    --mist:       #6B6358; /* Muted Meta Text */
+    --smoke:      #8C8479; /* Decorative Text */
+
+    /* Borders */
+    --border:     rgba(82, 43, 100, 0.12); /* Subtle Plum-tinted borders */
+    --border-mid: rgba(184, 146, 74, 0.30); /* Gold-tinted borders */
+
+    /* Spacing / radius */
+    --radius-sm:  3px;
+    --radius:     5px;
+    --radius-lg:  10px;
+
+    /* Motion */
+    --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out:cubic-bezier(0.4, 0, 0.2, 1);
+    --duration:   0.4s;
+
+    /* Font Families */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Jost', sans-serif;
+
+    /* Type Scale (Fluid Typography) */
+    --step-0: clamp(0.9rem, 0.1vw + 0.9rem, 1rem);      /* Body */
+    --step-1: clamp(1.1rem, 0.3vw + 1.1rem, 1.3rem);    /* Subheaders */
+    --step-2: clamp(1.8rem, 1.5vw + 1.8rem, 2.8rem);    /* H2 Section Titles */
+    --step-3: clamp(2.5rem, 4vw + 2.5rem, 4.8rem);      /* Hero H1 */
+    
+
+  /* Nav / overlay system tokens */
+  --nav-padding-y: 24px;
+  --nav-padding-y-solid: 14px;
+  --nav-padding-y-mobile: 16px;
+
+  --nav-bg: rgba(102, 5, 111, 0.03);
+  --nav-bg-solid: var(--plum);
+  --nav-bg-mobile: var(--plum);
+
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --nav-border-solid: rgba(201, 168, 76, 0.15);
+  --nav-border-mobile: rgba(201, 168, 76, 0.15);
+
+  --nav-shadow-solid: 0 10px 30px rgba(31, 14, 38, 0.25);
+  --nav-shadow-mobile: 0 10px 30px rgba(31, 14, 38, 0.2);
+
+  --nav-blur: blur(8px);
+  --nav-blur-mobile: none;
+
+  --nav-link-color: #FFFFFF;
+  --nav-phone-color: rgba(255, 255, 255, 0.8);
+  --nav-hamburger-color: #FFFFFF;
+
+  --mobile-overlay-bg: var(--obsidian);
+  --mobile-overlay-gap: 32px;
+  --mobile-overlay-padding: 110px 24px 32px;
+  --mobile-overlay-link-font-size: clamp(2.2rem, 8vw, 3rem);
+  --mobile-overlay-link-color: var(--plum);
+  --mobile-overlay-link-hover: var(--gold);
+
+  --btn-font-size: 0.7rem;
+  --btn-font-weight: 600;
+  --btn-letter-spacing: 0.18em;
+  --btn-padding-y: 15px;
+  --btn-padding-x: 32px;
+  --btn-radius: var(--radius-sm);
+
+  --btn-gold-bg: var(--gold);
+  --btn-gold-bg-hover: var(--gold-bright);
+  --btn-gold-color: var(--plum);
+  --btn-gold-border: var(--gold);
+  --btn-gold-shadow: 0 14px 40px var(--gold-glow);
+
+  --btn-nav-font-size: 0.65rem;
+  --btn-nav-letter-spacing: 0.16em;
+  --btn-nav-padding-y: 12px;
+  --btn-nav-padding-x: 28px;
+
+  --btn-mobile-width: min(100%, 320px);
+  --btn-mobile-min-height: 56px;
+  --btn-mobile-font-size: 0.78rem;
+  --btn-mobile-letter-spacing: 0.16em;
+  --btn-mobile-padding: 16px 24px;
+  --btn-mobile-margin-top: 12px;
+
+  --mobile-close-color: var(--plum);
+  --mobile-close-size: 1.8rem;
+
+  --nav-logo-width-mobile: 110px;
+  --nav-logo-height-mobile: 42px;
+  --nav-logo-image-height-mobile: 72px;
+
+  --hero-mobile-content-width: min(100% - 32px, 360px);
+  --hero-mobile-padding-top: 110px;
+  --hero-mobile-padding-bottom: 32px;
+  --hero-mobile-gap: 12px;
+
+  --copy-max-width: 62ch;
+  --copy-max-width-narrow: 32ch;
+
+  --section-title-line-height: 1.12;
+  --body-line-height: 1.8;
+  --body-line-height-tight: 1.7;
+  --meta-line-height: 1.5;
+
+  --text-body-sm: 0.92rem;
+  --text-body-xs: 0.82rem;
+  --text-meta: 0.72rem;
+
+  /* Spacing system */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 60px;
+  --space-10: 80px;
+  --space-11: 100px;
+  --space-12: 120px;
+
+  /* CTA / button spacing */
+  --btn-gap: 9px;
+  --btn-padding-y: 15px;
+  --btn-padding-x: 32px;
+
+  --btn-compact-padding-y: 12px;
+  --btn-compact-padding-x: 22px;
+  --btn-compact-font-size: 0.65rem;
+
+  --btn-nav-padding-y: 12px;
+  --btn-nav-padding-x: 28px;
+
+  --btn-mobile-padding-y: 16px;
+  --btn-mobile-padding-x: 24px;
+  --btn-mobile-width: min(100%, 320px);
+  --btn-mobile-min-height: 56px;
+
+  --section-padding-lg: var(--space-12);
+  --section-padding-md: var(--space-11);
+  --section-padding-sm: var(--space-10);
+
+  --stack-xs: var(--space-2);
+  --stack-sm: var(--space-3);
+  --stack-md: var(--space-4);
+  --stack-lg: var(--space-5);
+  --stack-xl: var(--space-6);
+
+  --motion-fast: 0.25s;
+  --motion-base: 0.4s;
+  --motion-slow: 0.6s;
+
+  --lift-sm: translateY(-2px);
+  --lift-md: translateY(-4px);
+  --lift-lg: translateY(-8px);
+
+  --container-mobile: min(100% - 24px, 340px);
+  --container-mobile-tight: min(100% - 32px, 320px);
+--container-mobile-card: min(100% - 24px, 360px);
+}

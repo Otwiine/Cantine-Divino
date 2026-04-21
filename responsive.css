@@ -1,0 +1,622 @@
+/* ═══════════════════════════════════════════════════════════
+RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .pillars { grid-template-columns: repeat(2, 1fr); }
+  .offerings-grid { grid-template-columns: 1fr 1fr; }
+  .offer-card:nth-child(3) { grid-column: 1 / -1; aspect-ratio: 16 / 8; }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 240px 240px 240px;
+    gap: 3px;
+  }
+
+  .g-1 { grid-column: 1; grid-row: 1 / 3; }
+  .g-2 { grid-column: 2; grid-row: 1; }
+  .g-3 { grid-column: 3; grid-row: 1; }
+  .g-4 { grid-column: 2; grid-row: 2; }
+  .g-5 { grid-column: 3; grid-row: 2; }
+  .g-6 { grid-column: 1; grid-row: 3; }
+  .g-7 { grid-column: 2; grid-row: 3; }
+  .g-8 { grid-column: 3; grid-row: 3; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ─────────────────────────────────────────
+   MOBILE BASE
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --nav-bg: var(--nav-bg-mobile);
+    --nav-bg-solid: var(--nav-bg-mobile);
+    --nav-padding-y: var(--nav-padding-y-mobile);
+    --nav-padding-y-solid: var(--nav-padding-y-mobile);
+    --nav-border: var(--nav-border-mobile);
+    --nav-border-solid: var(--nav-border-mobile);
+    --nav-shadow-solid: var(--nav-shadow-mobile);
+    --nav-blur: var(--nav-blur-mobile);
+
+    --hero-mobile-padding-top: 96px;
+    --hero-mobile-padding-bottom: 28px;
+    --hero-mobile-gap: 12px;
+
+    --mobile-overlay-gap: 32px;
+    --mobile-overlay-padding: 110px 24px 32px;
+  }
+
+  .container {
+    width: var(--container-mobile);
+  }
+
+  .nav-links,
+  .nav-phone,
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+    z-index: 1001;
+  }
+
+  .nav-logo {
+    width: var(--nav-logo-width-mobile);
+    height: var(--nav-logo-height-mobile);
+  }
+
+  .nav-logo img {
+    height: var(--nav-logo-image-height-mobile);
+  }
+
+  .hero-proof-card,
+  .hero-scroll {
+    display: none;
+  }
+
+  #hero {
+    min-height: 100svh;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  #hero > .container:first-of-type,
+  .exp-top,
+  .proof-head,
+  .gallery-head,
+  .offerings-header,
+  .reserve-left,
+  .loc-info {
+    width: var(--container-mobile-tight);
+    margin-inline: auto;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100svh;
+    padding-top: var(--hero-mobile-padding-top);
+    padding-bottom: var(--hero-mobile-padding-bottom);
+  }
+
+  .hero-loc {
+    margin-bottom: 18px;
+  }
+
+  .hero-h1 {
+    font-size: clamp(2.35rem, 10vw, 3.8rem);
+    line-height: 1.02;
+    max-width: 8ch;
+    margin-bottom: 14px;
+  }
+
+  .hero-sub {
+    max-width: 32ch;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--hero-mobile-gap);
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+
+  .hero-btns .btn {
+    width: 100%;
+  }
+
+  .hero-urgency {
+    margin-top: 0;
+  }
+
+  .stats-row { grid-template-columns: 1fr; }
+  .stat {
+    border-right: none;
+    border-bottom: 1px solid rgba(82, 43, 100, 0.08);
+  }
+  .stat:last-child { border-bottom: none; }
+
+  .testimonials,
+  .about-grid,
+  .menu-grid,
+  .loc-grid,
+  .form-2col,
+  .offerings-grid,
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-top,
+  .proof-head,
+  .gallery-head,
+  .offerings-header,
+  .menu-head-left,
+  .reserve-left,
+  .loc-info {
+    text-align: center;
+  }
+
+  .exp-top p,
+  .offerings-header p,
+  .reserve-left p,
+  .menu-cta-wrap p,
+  .loc-info .info-row-value {
+    margin-inline: auto;
+  }
+
+  .about-visual { min-height: 340px; }
+  .about-badge { right: 16px; }
+  .about-body {
+    padding: 44px 32px;
+    border-left: 1px solid var(--border);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 180px;
+    gap: 3px;
+  }
+
+  .g {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    height: 100%;
+  }
+
+  .g-1 {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    aspect-ratio: auto;
+  }
+
+  .g-5 {
+    grid-column: 2;
+    grid-row: 4 / 6;
+    aspect-ratio: auto;
+  }
+
+  .g-2,
+  .g-3,
+  .g-4,
+  .g-6,
+  .g-7,
+  .g-8 {
+    aspect-ratio: 1 / 1;
+  }
+
+  .gallery-grid img,
+  .gallery-grid video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .loc-grid { gap: 40px; }
+
+  .loc-actions,
+  .menu-cta-btns {
+    align-items: center;
+    justify-content: center;
+    gap: var(--stack-sm);
+  }
+
+  .reserve-inner {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 60px 0;
+  }
+
+  .footer-grid { gap: 40px; }
+  .footer-social { gap: var(--stack-sm); }
+
+  .offer-card,
+  .offer-card:nth-child(3) {
+    grid-column: auto;
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* ─────────────────────────────────────────
+   COMPACT HEIGHT PHONES
+───────────────────────────────────────── */
+@media (max-width: 768px) and (max-height: 740px) {
+  :root {
+    --hero-mobile-padding-top: 84px;
+    --hero-mobile-padding-bottom: 22px;
+    --hero-mobile-gap: 10px;
+    --mobile-overlay-gap: 24px;
+    --mobile-overlay-padding: 96px 20px 24px;
+    --nav-logo-image-height-mobile: 66px;
+  }
+
+  .hero-loc {
+    margin-bottom: 16px;
+  }
+
+  .hero-h1 {
+    font-size: clamp(2.1rem, 9vw, 3.1rem);
+    margin-bottom: 12px;
+  }
+
+  .hero-sub {
+    font-size: 0.93rem;
+    line-height: 1.58;
+    margin-bottom: 18px;
+  }
+
+  .hero-btns {
+    margin-bottom: 14px;
+  }
+
+  .hero-urgency {
+    margin-top: 0;
+  }
+
+  .urgency-text {
+    font-size: 0.72rem;
+  }
+
+  .mobile-overlay a:not(.mobile-overlay-cta) {
+    font-size: clamp(1.9rem, 7vw, 2.4rem);
+  }
+
+  .mobile-overlay-cta {
+    min-height: 52px;
+    padding: 14px 20px;
+  }
+
+  .wa-bubble {
+    width: 52px;
+    height: 52px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .wa-bubble svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   iPHONE SE / VERY SHORT PHONES
+───────────────────────────────────────── */
+@media (max-width: 768px) and (max-height: 680px) {
+  .hero-content {
+    padding-top: 76px;
+    padding-bottom: 18px;
+  }
+
+  .hero-loc {
+    padding: 5px 12px 5px 10px;
+    margin-bottom: 12px;
+  }
+
+  .hero-loc span {
+    font-size: 0.58rem;
+  }
+
+  .hero-h1 {
+    font-size: clamp(1.9rem, 8.4vw, 2.8rem);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .hero-sub {
+    max-width: 29ch;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .hero-btns .btn {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  .hero-urgency {
+    display: none;
+  }
+
+  .mobile-overlay {
+    justify-content: center;
+    gap: 18px;
+    padding: 84px 18px 18px;
+  }
+
+  .mobile-overlay a:not(.mobile-overlay-cta) {
+    font-size: clamp(1.6rem, 6.2vw, 2.1rem);
+    line-height: 1.02;
+  }
+
+  .mobile-close {
+    top: 18px;
+    right: 22px;
+    font-size: 1.5rem;
+  }
+
+  .gallery-grid {
+    grid-auto-rows: 150px;
+  }
+
+  .reserve-inner {
+    gap: 36px;
+    padding: 48px 0;
+  }
+
+  .reserve-form-card {
+    padding: 36px 24px;
+  }
+
+  .phone-band {
+    padding: 40px 0;
+  }
+}
+
+/* ─────────────────────────────────────────
+   EXTREMELY TIGHT HEIGHT SAFETY LAYER
+───────────────────────────────────────── */
+@media (max-width: 768px) and (max-height: 640px) {
+  .hero-content {
+    padding-top: 70px;
+    padding-bottom: 14px;
+  }
+
+  .hero-h1 {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+  }
+
+  .hero-sub {
+    font-size: 0.86rem;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+
+  .hero-btns .btn {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .mobile-overlay {
+    gap: 16px;
+    padding: 78px 16px 16px;
+  }
+
+  .mobile-overlay-cta {
+    min-height: 48px;
+    font-size: 0.72rem;
+  }
+
+  .wa-bubble {
+    width: 48px;
+    height: 48px;
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .wa-tooltip {
+    display: none;
+  }
+}
+
+/* ─────────────────────────────────────────
+   TALLER PHONES
+───────────────────────────────────────── */
+@media (max-width: 768px) and (min-height: 820px) {
+  .hero-content {
+    padding-top: 108px;
+    padding-bottom: 36px;
+  }
+
+  .hero-sub {
+    margin-bottom: 26px;
+  }
+
+  .hero-btns {
+    margin-bottom: 20px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   COMPACT MOBILE WIDTH
+───────────────────────────────────────── */
+@media (max-width: 480px) {
+  #nav {
+    padding: 14px 0;
+  }
+
+  .nav-logo {
+    width: 92px;
+    height: 36px;
+  }
+
+  .nav-logo img {
+    height: 60px;
+  }
+
+  .nav-hamburger span {
+    width: 20px;
+  }
+
+  .hero-h1 {
+    font-size: clamp(1.9rem, 8vw, 2.8rem);
+    line-height: 1;
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .exp-top h2,
+  .proof-head h2,
+  .gallery-head h2,
+  .offerings-header h2,
+  .menu-head-left h2,
+  .loc-info h2,
+  .reserve-left h2 {
+    font-size: clamp(1.7rem, 7vw, 2.2rem);
+    line-height: 1.08;
+  }
+
+  .pillar p,
+  .tcard-text,
+  .about-body p,
+  .menu-desc,
+  .reserve-left p {
+    font-size: 0.84rem;
+    line-height: 1.65;
+  }
+
+  .menu-item {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    grid-template-areas:
+      "image tag"
+      "image name"
+      "image desc"
+      "price price";
+    align-items: start;
+    gap: 12px 16px;
+    padding: 20px 18px;
+  }
+
+  .menu-img {
+    grid-area: image;
+    width: 88px;
+    height: 88px;
+  }
+
+  .menu-info {
+    display: contents;
+  }
+
+  .menu-tag {
+    grid-area: tag;
+    margin-bottom: 0;
+  }
+
+  .menu-name {
+    grid-area: name;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+
+  .menu-desc {
+    grid-area: desc;
+    max-width: none;
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .menu-price {
+    grid-area: price;
+    text-align: left;
+    padding-left: 0;
+    min-width: 0;
+    padding-top: 8px;
+  }
+
+  .chefs-badge {
+    top: 12px;
+    right: 12px;
+    font-size: 0.46rem;
+  }
+}
+@media (max-width: 768px) {
+  .inline-stack-sm,
+  .loc-actions,
+  .menu-cta-btns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--hero-mobile-gap);
+    margin-top: var(--space-3);
+    align-items: stretch;
+  }
+
+  .menu-cta-btns .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+
+  #hero {
+    min-height: 100svh;
+    height: 100svh;          /* exact — not auto */
+    justify-content: flex-start;
+  }
+
+  .container.hero-layer {
+    flex: 1;                 /* grows to fill #hero */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;                 /* fills .hero-layer instead of forcing its own height */
+    min-height: 0;           /* override the 100svh — THIS is the key line */
+    padding-top: var(--hero-mobile-padding-top);
+    padding-bottom: var(--hero-mobile-padding-bottom);
+  }
+
+  .proof-layer {
+    display: none;           /* remove from flow entirely, not just the card inside */
+  }
+
+}
+@media (max-width: 768px) {
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+
+    padding-top: var(--hero-mobile-padding-top);
+    padding-bottom: var(--hero-mobile-padding-bottom);
+  }
+
+  /* THIS is the key */
+  .hero-content-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-md);
+  }
+
+  .hero-bottom {
+    margin-top: auto;
+  }
+}

@@ -1,0 +1,167 @@
+/* ── Reset & Typography ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-tap-highlight-color: transparent; }
+
+    body {
+    /* 60% — Main Parchment Base */
+    background: var(--obsidian); 
+    /* 30% — Deep Plum for body text to maintain "ink" brand presence */
+    color: var(--ivory); 
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Tactile Paper Texture Grain */
+    body::before {
+content: '';
+position: fixed;
+inset: 0;
+pointer-events: none;
+z-index: 9999;
+opacity: 0.035;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+background-repeat: repeat;
+background-size: 128px 128px;
+}
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; transition: all 0.3s var(--ease-out); }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* Global Typography Rules */
+    p {
+    margin-bottom: 1.5rem;
+    max-width: 65ch; /* Optimal reading length */
+    }
+
+    h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--plum);
+    text-wrap: balance; 
+    }
+
+    /* ── Layout ── */
+    .container {
+    width: min(1200px, 90%);
+    margin-inline: auto;
+    }
+    .container--narrow {
+    width: min(760px, 90%);
+    margin-inline: auto;
+    }
+
+    /* ── Type Scale ── */
+    .label {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold); 
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    }
+    .label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+    }
+/* ── Divider ornament ── */
+    .ornament {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--gold);
+    opacity: 0.6;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    }
+    .ornament::before, .ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+    }
+
+    /* ── Scroll reveal system ── */
+    [data-animate] {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+    [data-animate="left"] { transform: translateX(-32px); }
+    [data-animate="right"] { transform: translateX(32px); }
+    [data-animate="scale"] { transform: scale(0.96); }
+    [data-animate].visible { opacity: 1; transform: none; }
+
+    [data-delay="1"] { transition-delay: 0.1s; }
+    [data-delay="2"] { transition-delay: 0.2s; }
+    [data-delay="3"] { transition-delay: 0.32s; }
+    [data-delay="4"] { transition-delay: 0.44s; }
+    [data-delay="5"] { transition-delay: 0.56s; }
+
+
+    [data-reveal] {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+
+    [data-reveal].in-view {
+    opacity: 1;
+    transform: none;
+    }
+
+    .field-error {
+    border-color: #c0392b !important;
+    }
+
+    .toast {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 9999;
+    max-width: 320px;
+    padding: 0.95rem 1.15rem;
+    border-radius: 6px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+    }
+
+    .toast-success {
+    background: var(--gold);
+    color: var(--plum);
+    }
+
+    .toast-error {
+    background: #dc2626;
+    color: #ffffff;
+    }
+
+    .toast-info {
+    background: var(--plum);
+    color: #ffffff;
+    }
