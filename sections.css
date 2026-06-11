@@ -241,7 +241,7 @@
     EXPERIENCE INTRO
     ═══════════════════════════════════════════════════════════ */
     #experience {
-    padding: 120px 0 100px;
+    padding: 120px 0 40px;
     background: var(--obsidian); 
     position: relative;
     }
@@ -334,7 +334,7 @@
     SOCIAL PROOF
     ═══════════════════════════════════════════════════════════ */
     #proof {
-    padding: 100px 0;
+    padding: 30px 0 100px;
     background: var(--obsidian); 
     }
 
@@ -383,40 +383,58 @@
     }
 
     .testimonials {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) rgba(82, 43, 100, 0.05);
+    }
+    .testimonials::-webkit-scrollbar {
+    height: 6px;
+    }
+    .testimonials::-webkit-scrollbar-track {
+    background: rgba(82, 43, 100, 0.05);
+    border-radius: 10px;
+    }
+    .testimonials::-webkit-scrollbar-thumb {
+    background-color: var(--gold);
+    border-radius: 10px;
     }
     .tcard {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 36px 30px 30px;
+    padding: 24px 20px 20px;
     position: relative;
     border-left: 3px solid var(--gold);
+    flex: 0 0 calc((100% - 48px) / 3);
+    flex-shrink: 0;
+    scroll-snap-align: start;
     transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
     }
     .tcard:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     box-shadow: 0 20px 40px rgba(82, 43, 100, 0.06);
     border-color: var(--border-mid);
     }
     .tcard-quote {
     font-family: var(--font-serif);
-    font-size: 4.5rem;
+    font-size: 2.8rem;
     line-height: 0.6;
     color: var(--gold);
     opacity: 0.25;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     display: block;
     }
     .tcard-text {
     font-family: var(--font-serif);
-    font-size: 1rem;
+    font-size: 0.92rem;
     font-style: italic;
     color: var(--ivory);
-    line-height: 1.7;
-    margin-bottom: 24px;
+    line-height: 1.6;
+    margin-bottom: 16px;
     }
     .tcard-footer {
     display: flex;
@@ -689,6 +707,27 @@
     color: #FFFFFF;
     opacity: 1;
     }
+    .mf-btn-link {
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 9px 20px;
+    border-radius: 100px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    }
+    .mf-btn-link:hover {
+    background: var(--gold);
+    color: #FFFFFF;
+    border-color: var(--gold);
+    }
 
     .menu-grid {
     display: grid;
@@ -774,6 +813,12 @@
     text-align: center;
     }
     .menu-cta-wrap p { font-size: 0.82rem; color: var(--smoke); }
+    .menu-cta-btns {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    }
 
     /* ═══════════════════════════════════════════════════════════
     GALLERY
@@ -898,6 +943,14 @@
     .hour-time { color: var(--ivory); font-weight: 500; }
 
     .loc-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
+    .loc-actions-center {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 52px;
+    }
     .map-box {
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -983,6 +1036,7 @@
     }
     .form-control::placeholder { color: rgba(82, 43, 100, 0.3); }
     .form-control:focus { border-color: var(--plum); box-shadow: 0 0 0 3px rgba(82, 43, 100, 0.05); }
+    textarea.form-control { resize: vertical; min-height: 90px; line-height: 1.6; }
     .form-select-wrap::after { border-top: 5px solid var(--plum); }
 
     .form-submit {
@@ -1022,7 +1076,7 @@
     background: var(--plum); border-top: 1px solid rgba(201, 168, 76, 0.2); padding: 80px 0 40px;
     }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 56px; margin-bottom: 60px; }
-    .footer-brand img { height: 42px; margin-bottom: 18px; filter: brightness(0) invert(1) opacity(0.9); }
+    .footer-brand img { height: 42px; margin-bottom: 18px; }
     .footer-brand p { font-size: 0.8rem; color: var(--obsidian); opacity: 0.8; line-height: 1.85; max-width: 240px; }
 
     .footer-col h4 { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
@@ -1068,7 +1122,9 @@
     line-height: var(--section-title-line-height);
     }
 
-    #experience,
+    #experience {
+    padding: var(--section-padding-lg) 0 var(--space-6);
+    }
     #about,
     #menu,
     #location {
@@ -1076,7 +1132,7 @@
     }
 
     #proof {
-    padding: var(--section-padding-md) 0;
+    padding: var(--space-5) 0 var(--section-padding-md);
     }
 
     .offerings-header,
@@ -1112,7 +1168,7 @@
     }
 
     .tcard {
-    padding: 36px 30px 30px;
+    padding: 24px 20px 20px;
     }
 
     .reserve-form-card {

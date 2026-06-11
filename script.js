@@ -8,11 +8,12 @@
         mobileOverlayLinks: '#mobileOverlay a[href^="#"]',
         revealItems: '[data-reveal]',
         filterButtons: '.mf-btn',
-        reserveSectionForm: '#reserve form',
+        reserveForm: '#reserve-form',
         reserveName: '#r_name',
-        reservePhone: '#r_phone',
         reserveDate: '#r_date',
-        reserveTime: '#r_time'
+        reserveTime: '#r_time',
+        reserveGuests: '#r_guests',
+        reserveNotes: '#r_notes'
     };
 
     const state = {
@@ -206,64 +207,53 @@
     function handleReserveSubmit(event) {
         event.preventDefault();
 
-        const form = event.currentTarget;
-        const nameInput = qs(SELECTORS.reserveName, form) || qs(SELECTORS.reserveName);
-        const phoneInput = qs(SELECTORS.reservePhone, form) || qs(SELECTORS.reservePhone);
-        const dateInput = qs(SELECTORS.reserveDate, form) || qs(SELECTORS.reserveDate);
-        const timeInput = qs(SELECTORS.reserveTime, form) || qs(SELECTORS.reserveTime);
+        const nameInput   = qs(SELECTORS.reserveName);
+        const dateInput   = qs(SELECTORS.reserveDate);
+        const timeInput   = qs(SELECTORS.reserveTime);
+        const guestsInput = qs(SELECTORS.reserveGuests);
+        const notesInput  = qs(SELECTORS.reserveNotes);
 
-        const name = nameInput?.value.trim() || '';
-        const phone = phoneInput?.value.trim() || '';
-        const date = dateInput?.value || '';
-        const time = timeInput?.value || '';
+        const name   = nameInput?.value.trim()   || '';
+        const date   = dateInput?.value           || '';
+        const time   = timeInput?.value           || '';
+        const guests = guestsInput?.value         || '';
+        const notes  = notesInput?.value.trim()   || '';
 
         let hasError = false;
 
-        if (!name) {
-        markFieldInvalid(nameInput);
-        hasError = true;
-        }
-
-        if (!phone) {
-        markFieldInvalid(phoneInput);
-        hasError = true;
-        }
-
-        if (!date) {
-        markFieldInvalid(dateInput);
-        hasError = true;
-        }
-
-        if (!time) {
-        markFieldInvalid(timeInput);
-        hasError = true;
-        }
+        if (!name)   { markFieldInvalid(nameInput);   hasError = true; }
+        if (!date)   { markFieldInvalid(dateInput);   hasError = true; }
+        if (!time)   { markFieldInvalid(timeInput);   hasError = true; }
+        if (!guests) { markFieldInvalid(guestsInput); hasError = true; }
 
         if (hasError) {
-        showToast('Please complete all required reservation fields.', 'error');
-        return;
+            showToast('Please fill in all required fields.', 'error');
+            return;
         }
 
-        const message =
-        `Hello Cantine Divino! I would like to make a reservation.\n\n` +
-        `Name: ${name}\n` +
-        `Phone: ${phone}\n` +
-        `Date: ${date}\n` +
-        `Time: ${time}`;
+        const lines = [
+            `Hello, I would like to make a reservation at Cantine Divino.`,
+            ``,
+            `Name: ${name}`,
+            `Date: ${date}`,
+            `Time: ${time}`,
+            `Guests: ${guests}`,
+        ];
+        if (notes) lines.push(`Notes: ${notes}`);
 
+        const message = lines.join('\n');
         const whatsappUrl = `https://wa.me/256700805000?text=${encodeURIComponent(message)}`;
 
-        showToast('Redirecting to WhatsApp...', 'success');
+        showToast('Opening WhatsApp…', 'success');
         window.open(whatsappUrl, '_blank', 'noopener');
 
-        form.reset();
+        event.target.reset();
         initDateMin();
     }
 
     function initReservationForm() {
-        const form = qs(SELECTORS.reserveSectionForm);
+        const form = qs(SELECTORS.reserveForm);
         if (!form) return;
-
         form.addEventListener('submit', handleReserveSubmit);
     }
 

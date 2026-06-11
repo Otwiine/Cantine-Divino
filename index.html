@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cantine Divino — Kampala's Finest Italian Restaurant</title>
-  <meta name="description" content="Kampala's most celebrated Italian dining experience. Premium dry-aged steaks, handmade pasta, curated Italian wines, and live jazz in a candlelit garden in Kololo." />
+  <meta name="description"
+    content="Kampala's most celebrated Italian dining experience. Premium dry-aged steaks, handmade pasta, curated Italian wines, and live jazz in a candlelit garden in Kololo." />
 
   <!--
     FONT STRATEGY:
@@ -16,7 +18,9 @@
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
 
 </head>
@@ -25,37 +29,48 @@
 <body>
 
   <!-- ── Sticky WhatsApp bubble — critical for Kampala market ── -->
-  <a class="wa-bubble" href="https://wa.me/256700805000?text=Hello%2C%20I%27d%20like%20to%20make%20a%20reservation%20at%20Cantine%20Divino" target="_blank" rel="noopener" aria-label="Book via WhatsApp">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <a class="wa-bubble"
+    href="https://wa.me/256700805000?text=Hello%2C%20I%27d%20like%20to%20make%20a%20reservation%20at%20Cantine%20Divino"
+    target="_blank" rel="noopener" aria-label="Book via WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
     <span class="wa-tooltip">Book on WhatsApp</span>
   </a>
 
   <!-- ── Mobile Overlay ── -->
-<div class="mobile-overlay" id="mobileOverlay">
-  <button class="mobile-close">✕</button>
-  <a href="#experience">Experience</a>
-  <a href="#menu">Menu</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#location">Visit</a>
-  <a href="#reserve" class="mobile-overlay-cta">Reserve a Table</a></div>
+  <div class="mobile-overlay" id="mobileOverlay">
+    <button class="mobile-close">✕</button>
+    <a href="#experience">Experience</a>
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Visit</a>
+    <a href="#reserve">Reservations</a>
+    <a href="#reserve" class="mobile-overlay-cta">Reserve a Table</a>
+  </div>
 
   <!-- ════════════════════════════════════════════════════════════
        NAV
   ═════════════════════════════════════════════════════════════ -->
   <nav id="nav">
     <div class="container nav-wrap">
-    <a href="#hero" class="nav-logo" aria-label="Cantine Divino home">
-      <img src="media/images/LOGO.svg" alt="Cantine Divino" class="logo-default" />
-    </a>
+      <a href="#hero" class="nav-logo" aria-label="Cantine Divino home">
+        <img src="media/images/LOGO.svg" alt="Cantine Divino" class="logo-default" />
+      </a>
       <ul class="nav-links">
         <li><a href="#experience">Experience</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#location">Visit Us</a></li>
+        <li><a href="#reserve">Reservations</a></li>
       </ul>
       <div class="nav-right">
         <a href="tel:+256700805000" class="nav-phone">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z" />
+          </svg>
           0700 805000
         </a>
         <a href="#reserve" class="nav-cta">Reserve a Table</a>
@@ -77,7 +92,10 @@
     <div class="container hero-layer">
       <div class="hero-content">
         <div class="hero-loc">
-          <svg width="11" height="14" viewBox="0 0 11 14" fill="currentColor"><path d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.125 5.5 8.5 5.5 8.5S11 9.625 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5A2 2 0 1 1 5.5 3.5a2 2 0 0 1 0 4z"/></svg>
+          <svg width="11" height="14" viewBox="0 0 11 14" fill="currentColor">
+            <path
+              d="M5.5 0C2.46 0 0 2.46 0 5.5c0 4.125 5.5 8.5 5.5 8.5S11 9.625 11 5.5C11 2.46 8.54 0 5.5 0zm0 7.5A2 2 0 1 1 5.5 3.5a2 2 0 0 1 0 4z" />
+          </svg>
           <span>Mabua Road, Kololo · Kampala</span>
         </div>
         <h1 class="hero-h1">
@@ -90,7 +108,12 @@
         </p>
         <div class="hero-btns">
           <a href="#reserve" class="btn btn-gold">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
             Reserve Your Table
           </a>
           <a href="#menu" class="btn hero-btn">View the Menu</a>
@@ -146,7 +169,8 @@
         <span class="label">The Cantine Divino Experience</span>
         <h2>An Evening That Begins<br /><em>Before You're Seated</em></h2>
         <p>
-          From the moment you step into our candlelit garden to the last sip of a wine you'll be trying to pronounce for weeks — Cantine Divino is designed to slow time down and make the night yours.
+          From the moment you step into our candlelit garden to the last sip of a wine you'll be trying to pronounce for
+          weeks — Cantine Divino is designed to slow time down and make the night yours.
         </p>
       </div>
 
@@ -154,22 +178,26 @@
         <div class="pillar" data-reveal data-delay="1">
           <div class="pillar-icon"><img src="media/images/steak_gif.gif" alt="" /></div>
           <h3>Prime Cuts, Properly Aged</h3>
-          <p>Our steaks are sourced for marbling and aged for flavour. Charcoal-finished, rested precisely, served without fuss. The T-Bone here has a following of its own.</p>
+          <p>Our steaks are sourced for marbling and aged for flavour. Charcoal-finished, rested precisely, served
+            without fuss. The T-Bone here has a following of its own.</p>
         </div>
         <div class="pillar" data-reveal data-delay="2">
           <div class="pillar-icon"><img src="media/images/pasta_gif.gif" alt="" /></div>
           <h3>Pasta Made at Dawn</h3>
-          <p>Every ribbon, every sheet, every filled pocket — shaped by hand each morning before the kitchen opens. Italian technique, no shortcuts, no dried packets.</p>
+          <p>Every ribbon, every sheet, every filled pocket — shaped by hand each morning before the kitchen opens.
+            Italian technique, no shortcuts, no dried packets.</p>
         </div>
         <div class="pillar" data-reveal data-delay="3">
           <div class="pillar-icon"><img src="media/images/wine_gif.gif" alt="" /></div>
           <h3>A Wine List Worth Lingering Over</h3>
-          <p>From a crisp Pinot Grigio with the pasta to a structured Barolo with the steak — our team helps you find the bottle that makes the evening feel inevitable.</p>
+          <p>From a crisp Pinot Grigio with the pasta to a structured Barolo with the steak — our team helps you find
+            the bottle that makes the evening feel inevitable.</p>
         </div>
         <div class="pillar" data-reveal data-delay="4">
           <div class="pillar-icon"><img src="media/images/candle_gif.gif" alt="" /></div>
           <h3>Garden Ambiance, Kololo Nights</h3>
-          <p>Soft candlelight, open sky, and the kind of quiet that makes conversation come easily. Our garden is why couples return for every occasion that matters.</p>
+          <p>Soft candlelight, open sky, and the kind of quiet that makes conversation come easily. Our garden is why
+            couples return for every occasion that matters.</p>
         </div>
       </div>
     </div>
@@ -180,21 +208,7 @@
   ═════════════════════════════════════════════════════════════ -->
   <section id="proof">
     <div class="container">
-      <!-- Hard numbers first — fast credibility -->
-      <div class="stats-row" data-reveal>
-        <div class="stat">
-          <div class="stat-num">4.4★</div>
-          <div class="stat-label">Average rating<br>across 1,000+ Google reviews</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">10+</div>
-          <div class="stat-label">Years serving<br>Kampala's finest tables</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Handmade pasta<br>from scratch, every morning</div>
-        </div>
-      </div>
+
 
       <div class="proof-head" data-reveal>
         <span class="label">What Our Guests Say</span>
@@ -204,36 +218,78 @@
       <div class="testimonials">
         <div class="tcard" data-reveal data-delay="1">
           <span class="tcard-quote">"</span>
-          <p class="tcard-text">I've eaten steak across four continents. The T-Bone at Cantine Divino holds its own against any of them. The char, the rest time, the sauce — everything about it tells you someone cares deeply about this.</p>
+          <p class="tcard-text">Authentic Italian in the heart of Kololo. The handmade pasta is fresh and the T-bone
+            steak was grilled to perfection. Cozy garden atmosphere.</p>
           <div class="tcard-footer">
-            <div class="tcard-avatar">A</div>
+            <div class="tcard-avatar">S</div>
             <div>
-              <div class="tcard-name">Amara K.</div>
-              <div class="tcard-meta">Kampala · Business Dinner</div>
+              <div class="tcard-name">Samuel M.</div>
+              <div class="tcard-meta">Google Review</div>
             </div>
             <div class="tcard-stars">★★★★★</div>
           </div>
         </div>
         <div class="tcard" data-reveal data-delay="2">
           <span class="tcard-quote">"</span>
-          <p class="tcard-text">We brought our anniversary here on a friend's recommendation and ended up returning three times in two months. The garden, the wine, the way the staff quietly anticipate what you need — it feels like being in Italy.</p>
+          <p class="tcard-text">The service is exceptional—highly attentive and welcoming. Excellent wine selection to
+            pair with the meals. A must-visit dining experience.</p>
           <div class="tcard-footer">
-            <div class="tcard-avatar">R</div>
+            <div class="tcard-avatar">J</div>
             <div>
-              <div class="tcard-name">Rehema & James O.</div>
-              <div class="tcard-meta">Kololo · Date Night</div>
+              <div class="tcard-name">Jessica A.</div>
+              <div class="tcard-meta">Google Review</div>
             </div>
             <div class="tcard-stars">★★★★★</div>
           </div>
         </div>
         <div class="tcard" data-reveal data-delay="3">
           <span class="tcard-quote">"</span>
-          <p class="tcard-text">We entertain European clients regularly and Cantine Divino is the only place in Kampala where I don't have to make excuses for the wine list. The Barolo pairing suggestion alone impressed the entire room.</p>
+          <p class="tcard-text">Lovely romantic ambiance in the garden. The cheese and cured meat platter from the deli
+            was amazing. Easily one of the best spots in Kampala.</p>
           <div class="tcard-footer">
-            <div class="tcard-avatar">N</div>
+            <div class="tcard-avatar">P</div>
             <div>
-              <div class="tcard-name">Nakato S.</div>
-              <div class="tcard-meta">Kampala · Client Entertainment</div>
+              <div class="tcard-name">Pius K.</div>
+              <div class="tcard-meta">Google Review</div>
+            </div>
+            <div class="tcard-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="tcard" data-reveal data-delay="4">
+          <span class="tcard-quote">"</span>
+          <p class="tcard-text">Best handmade ravioli and pork ribs in Kampala. The garden is incredibly serene, making
+            it feel like an escape from the city.</p>
+          <div class="tcard-footer">
+            <div class="tcard-avatar">E</div>
+            <div>
+              <div class="tcard-name">Elena R.</div>
+              <div class="tcard-meta">Google Review</div>
+            </div>
+            <div class="tcard-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="tcard" data-reveal data-delay="5">
+          <span class="tcard-quote">"</span>
+          <p class="tcard-text">A sister to Mediterraneo and it shows in the details. The cheese board is outstanding,
+            paired with an excellent Chianti. Highly professional service.</p>
+          <div class="tcard-footer">
+            <div class="tcard-avatar">M</div>
+            <div>
+              <div class="tcard-name">Marcus T.</div>
+              <div class="tcard-meta">Google Review</div>
+            </div>
+            <div class="tcard-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="tcard" data-reveal data-delay="6">
+          <span class="tcard-quote">"</span>
+          <p class="tcard-text">We came for the live jazz on Friday and had the most memorable evening. Candlelit
+            tables, great wine, and exceptional food.</p>
+          <div class="tcard-footer">
+            <div class="tcard-avatar">A</div>
+            <div>
+              <div class="tcard-name">Anita N.</div>
+              <div class="tcard-meta">Google Review</div>
             </div>
             <div class="tcard-stars">★★★★★</div>
           </div>
@@ -259,10 +315,14 @@
           <span class="label">Our Story</span>
           <h2>Not Trying<br />to Be Italian.<br /><em>Simply Is.</em></h2>
           <p>
-            Cantine Divino was founded on a conviction Kampala's growing appetite for genuine luxury dining deserved more than hotel restaurants and imported mediocrity.
+            Cantine Divino was founded on a conviction Kampala's growing appetite for genuine luxury dining deserved
+            more than hotel restaurants and imported mediocrity.
           </p>
           <p>
-            Tucked into a candlelit garden on Mabua Road in Kololo, we've spent over a decade building something that doesn't need explaining — a place where the pasta is shaped by hand every morning, the steaks are chosen for marbling and not just weight, and the wine list reflects someone who has actually walked the Italian vineyards.
+            Tucked into a candlelit garden on Mabua Road in Kololo, we've spent over a decade building something that
+            doesn't need explaining — a place where the pasta is shaped by hand every morning, the steaks are chosen for
+            marbling and not just weight, and the wine list reflects someone who has actually walked the Italian
+            vineyards.
           </p>
           <div class="about-attrs">
             <div class="about-attr">
@@ -304,8 +364,9 @@
         <img src="media/images/steak.png" alt="Dry-aged prime steak" loading="lazy" />
         <div class="offer-overlay">
           <span class="offer-tag">Signature · The Grill</span>
-          <h3>Aged Beef,<br/>Honest Fire</h3>
-          <p class="offer-desc">Prime T-bones and ribeyes, dry-aged for depth of flavour and finished over real charcoal. Rested properly. Plated without pretension. This is the steak Kampala talks about.</p>
+          <h3>Aged Beef,<br />Honest Fire</h3>
+          <p class="offer-desc">Prime T-bones and ribeyes, dry-aged for depth of flavour and finished over real
+            charcoal. Rested properly. Plated without pretension. This is the steak Kampala talks about.</p>
           <a href="#reserve" class="offer-cta-link">Reserve to experience →</a>
         </div>
       </div>
@@ -313,8 +374,9 @@
         <img src="media/images/pasta.png" alt="Handmade Italian pasta" loading="lazy" />
         <div class="offer-overlay">
           <span class="offer-tag">Classic · Handmade Daily</span>
-          <h3>La Pasta.<br/>No Shortcuts.</h3>
-          <p class="offer-desc">Hand-rolled from semolina and farm eggs every morning. Tossed with DOP sauces built over hours. The kind of pasta that makes you stop mid-bite and say nothing.</p>
+          <h3>La Pasta.<br />No Shortcuts.</h3>
+          <p class="offer-desc">Hand-rolled from semolina and farm eggs every morning. Tossed with DOP sauces built over
+            hours. The kind of pasta that makes you stop mid-bite and say nothing.</p>
           <a href="#reserve" class="offer-cta-link">Reserve to experience →</a>
         </div>
       </div>
@@ -322,8 +384,9 @@
         <img src="media/images/drinks.png" alt="Italian wine cellar" loading="lazy" />
         <div class="offer-overlay">
           <span class="offer-tag">Cellar · Italian & International</span>
-          <h3>Wine That<br/>Earns the Night</h3>
-          <p class="offer-desc">From Barolo to Brunello, Prosecco to Primitivo — our cellar is a love letter to the Italian regions. Our team pairs every bottle to your table, not just your budget.</p>
+          <h3>Wine That<br />Earns the Night</h3>
+          <p class="offer-desc">From Barolo to Brunello, Prosecco to Primitivo — our cellar is a love letter to the
+            Italian regions. Our team pairs every bottle to your table, not just your budget.</p>
           <a href="#reserve" class="offer-cta-link">Reserve to experience →</a>
         </div>
       </div>
@@ -338,13 +401,14 @@
       <div class="menu-head">
         <div class="menu-head-left" data-reveal>
           <span class="label">On the Menu</span>
-          <h2>Dishes Worth Planning<br/>an Evening For</h2>
+          <h2>Dishes Worth Planning<br />an Evening For</h2>
         </div>
         <div class="menu-filter" data-reveal data-delay="1">
           <button class="mf-btn active">All</button>
           <button class="mf-btn">Steaks</button>
           <button class="mf-btn">Pasta</button>
           <button class="mf-btn">Drinks</button>
+          <a href="media/menu.pdf" target="_blank" class="mf-btn-link">View Full Menu ↗</a>
         </div>
       </div>
 
@@ -355,9 +419,10 @@
           <div class="menu-info">
             <div class="menu-tag">Grill · Aged Prime Cut</div>
             <div class="menu-name">T-Bone Steak</div>
-            <div class="menu-desc">Charcoal-finished, rested, served with seasonal greens and our proprietary bone-marrow reduction. The dish Cantine Divino is remembered for.</div>
+            <div class="menu-desc">Charcoal-finished, rested, served with seasonal greens and our proprietary
+              bone-marrow reduction. The dish Cantine Divino is remembered for.</div>
           </div>
-          <div class="menu-price">UGX 85,000<br/><span class="menu-price-meta">per person</span></div>
+          <div class="menu-price">UGX 85,000<br /><span class="menu-price-meta">per person</span></div>
         </div>
 
         <div class="menu-item" data-category="steaks">
@@ -365,9 +430,10 @@
           <div class="menu-info">
             <div class="menu-tag">Chef's Selection · Grill</div>
             <div class="menu-name">Herb-Crusted Lamb Chops</div>
-            <div class="menu-desc">Marinated in rosemary, garlic and preserved lemon. Finished with a Chianti reduction that lingers on the palate long after the plate is cleared.</div>
+            <div class="menu-desc">Marinated in rosemary, garlic and preserved lemon. Finished with a Chianti reduction
+              that lingers on the palate long after the plate is cleared.</div>
           </div>
-          <div class="menu-price">UGX 72,000<br/><span class="menu-price-meta">per person</span></div>
+          <div class="menu-price">UGX 72,000<br /><span class="menu-price-meta">per person</span></div>
         </div>
 
         <div class="menu-item" data-category="pasta">
@@ -375,9 +441,10 @@
           <div class="menu-info">
             <div class="menu-tag">Classic · Handmade</div>
             <div class="menu-name">House Pasta al Ragù</div>
-            <div class="menu-desc">Hand-rolled ribbons. Eight-hour slow-cooked meat ragù. Parmigiano Reggiano. A dish that takes a day to make and sixty seconds to decide to order again.</div>
+            <div class="menu-desc">Hand-rolled ribbons. Eight-hour slow-cooked meat ragù. Parmigiano Reggiano. A dish
+              that takes a day to make and sixty seconds to decide to order again.</div>
           </div>
-          <div class="menu-price">UGX 38,000<br/><span class="menu-price-meta">per person</span></div>
+          <div class="menu-price">UGX 38,000<br /><span class="menu-price-meta">per person</span></div>
         </div>
 
         <div class="menu-item" data-category="pasta">
@@ -385,9 +452,10 @@
           <div class="menu-info">
             <div class="menu-tag">Seasonal · Market Driven</div>
             <div class="menu-name">Chef's Daily Special</div>
-            <div class="menu-desc">Market-sourced, entirely unrepeatable. This is the kitchen unscripted — ask your server. The table next to you will order it the moment they hear what it is.</div>
+            <div class="menu-desc">Market-sourced, entirely unrepeatable. This is the kitchen unscripted — ask your
+              server. The table next to you will order it the moment they hear what it is.</div>
           </div>
-          <div class="menu-price">UGX 22,000+<br/><span class="menu-price-meta">per person</span></div>
+          <div class="menu-price">UGX 22,000+<br /><span class="menu-price-meta">per person</span></div>
         </div>
 
         <div class="menu-item" data-category="drinks">
@@ -395,9 +463,10 @@
           <div class="menu-info">
             <div class="menu-tag">Bar · Craft Cocktails</div>
             <div class="menu-name">Signature Cocktails</div>
-            <div class="menu-desc">Aperol Negronis. Limoncello Spritzes. House-aged Boulevardiers. Each glass is built as carefully as the first impression it makes.</div>
+            <div class="menu-desc">Aperol Negronis. Limoncello Spritzes. House-aged Boulevardiers. Each glass is built
+              as carefully as the first impression it makes.</div>
           </div>
-          <div class="menu-price">UGX 22,000+<br/><span class="menu-price-meta">per glass</span></div>
+          <div class="menu-price">UGX 22,000+<br /><span class="menu-price-meta">per glass</span></div>
         </div>
 
         <div class="menu-item" data-category="drinks">
@@ -405,17 +474,22 @@
           <div class="menu-info">
             <div class="menu-tag">Cellar · Sommelier Curated</div>
             <div class="menu-name">Wine Pairing Service</div>
-            <div class="menu-desc">Tell us your meal, and let our sommelier select the perfect bottle. From crisp Pinot Grigio to structured Barolo — the right wine makes everything taste better.</div>
+            <div class="menu-desc">Tell us your meal, and let our sommelier select the perfect bottle. From crisp Pinot
+              Grigio to structured Barolo — the right wine makes everything taste better.</div>
           </div>
-          <div class="menu-price">UGX 45,000+<br/><span class="menu-price-meta">per bottle</span></div>
+          <div class="menu-price">UGX 45,000+<br /><span class="menu-price-meta">per bottle</span></div>
         </div>
       </div>
 
       <div class="menu-cta-wrap" data-reveal>
-        <p>Our full menu changes seasonally. Speak with our team about dietary requirements, group menus, or private dining.</p>
+        <p>Our full menu changes seasonally. Speak with our team about dietary requirements, group menus, or private
+          dining.</p>
         <div class="menu-cta-btns">
           <a href="tel:+256700805000" class="btn btn-outline">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z" />
+            </svg>
             Call for Full Menu
           </a>
           <a href="#reserve" class="btn btn-gold">Reserve Your Table</a>
@@ -435,29 +509,29 @@
       </div>
     </div>
     <div class="gallery-grid">
-  <!-- First Item: Now a Video -->
-  <div class="g g-1">
-    <video autoplay loop muted playsinline poster="media/images/ambiance.png">
-      <source src="media/videos/jazz.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+      <!-- First Item: Now a Video -->
+      <div class="g g-1">
+        <video autoplay loop muted playsinline poster="media/images/ambiance.png">
+          <source src="media/videos/jazz.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-  <div class="g g-2"><img src="media/images/steak2.png" alt="Grilled steak" loading="lazy" /></div>
-  <div class="g g-3"><img src="media/images/food.png" alt="Italian food" loading="lazy" /></div>
-  <div class="g g-4"><img src="media/images/drink.png" alt="Cocktail" loading="lazy" /></div>
-  <div class="g g-8"><img src="media/images/pasta_wine.png" alt="Pasta and wine" loading="lazy" /></div>
-  <div class="g g-6"><img src="media/images/chair.png" alt="Dining seating" loading="lazy" /></div>
-  <div class="g g-7"><img src="media/images/table.png" alt="Dining table" loading="lazy" /></div>
+      <div class="g g-2"><img src="media/images/steak2.png" alt="Grilled steak" loading="lazy" /></div>
+      <div class="g g-3"><img src="media/images/food.png" alt="Italian food" loading="lazy" /></div>
+      <div class="g g-4"><img src="media/images/drink.png" alt="Cocktail" loading="lazy" /></div>
+      <div class="g g-8"><img src="media/images/pasta_wine.png" alt="Pasta and wine" loading="lazy" /></div>
+      <div class="g g-6"><img src="media/images/chair.png" alt="Dining seating" loading="lazy" /></div>
+      <div class="g g-7"><img src="media/images/table.png" alt="Dining table" loading="lazy" /></div>
 
-  <!-- Last Item: Now a Video -->
-  <div class="g g-5">
-    <video autoplay loop muted playsinline poster="media/images/food1.png">
-      <source src="media/videos/cooking.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</div>
+      <!-- Last Item: Now a Video -->
+      <div class="g g-5">
+        <video autoplay loop muted playsinline poster="media/images/food1.png">
+          <source src="media/videos/cooking.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
 
     <!-- Jazz band interlude below gallery -->
     <div class="jazz-band">
@@ -467,7 +541,8 @@
             <span class="jazz-icon">🎷</span>
             <div class="jazz-copy">
               <h3>Live Jazz, Every Friday Evening</h3>
-              <p>Our resident ensemble plays from 7 PM. Soft brass, candlelight, and a Barolo — the kind of Friday night you come back for.</p>
+              <p>Our resident ensemble plays from 7 PM. Soft brass, candlelight, and a Barolo — the kind of Friday night
+                you come back for.</p>
             </div>
           </div>
           <a href="#reserve" class="btn btn-gold">Book a Jazz Night</a>
@@ -484,11 +559,11 @@
       <div class="loc-grid">
         <div class="loc-info" data-reveal>
           <span class="label">Find Us</span>
-          <h2>In Kololo,<br/>Where Every<br/>Evening Belongs</h2>
+          <h2>In Kololo,<br />Where Every<br />Evening Belongs</h2>
 
           <div class="info-row">
             <div class="info-row-label">Address</div>
-            <div class="info-row-value">Mabua Road, Kololo<br/>Kampala, Uganda</div>
+            <div class="info-row-value">Mabua Road, Kololo<br />Kampala, Uganda</div>
           </div>
 
           <div class="info-row">
@@ -503,16 +578,8 @@
             <div class="info-row-value">
               <div class="hours-list">
                 <div class="hour-row">
-                  <span class="hour-day">Monday – Thursday</span>
-                  <span class="hour-time">9:00 AM – 10:00 PM</span>
-                </div>
-                <div class="hour-row">
-                  <span class="hour-day">Friday – Saturday</span>
+                  <span class="hour-day">Everyday</span>
                   <span class="hour-time">9:00 AM – 11:00 PM</span>
-                </div>
-                <div class="hour-row">
-                  <span class="hour-day">Sunday</span>
-                  <span class="hour-time">10:00 AM – 10:00 PM</span>
                 </div>
               </div>
               <p class=loc-note>
@@ -521,28 +588,35 @@
             </div>
           </div>
 
-          <div class="loc-actions">
-            <a href="tel:+256700805000" class="btn btn-gold">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
-              Call Now
-            </a>
-            <a href="https://wa.me/256700805000?text=Hello%2C%20I'd%20like%20to%20book%20a%20table%20at%20Cantine%20Divino" target="_blank" class="btn btn-whatsapp">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Book on WhatsApp
-            </a>
-          </div>
         </div>
 
         <div class="map-box" data-reveal data-delay="2">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.751168896409!2d32.588237!3d0.3324217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbba21de4103b%3A0x73bb8e14fe62a408!2sCantine%20Divino!5e0!3m2!1sen!2sug!4v1776408952276!5m2!1sen!2sug"
-              title="Cantine Divino on Google Maps"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen>
-            </iframe>
-          <a href="https://www.google.com/maps/search/Cantine+Divino+Kampala" target="_blank" class="map-overlay-btn">Open Full Map →</a>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.751168896409!2d32.588237!3d0.3324217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbba21de4103b%3A0x73bb8e14fe62a408!2sCantine%20Divino!5e0!3m2!1sen!2sug!4v1776408952276!5m2!1sen!2sug"
+            title="Cantine Divino on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+          <a href="https://www.google.com/maps/search/Cantine+Divino+Kampala" target="_blank"
+            class="map-overlay-btn">Open Full Map →</a>
         </div>
+      </div>
+
+      <div class="loc-actions-center" data-reveal>
+        <a href="tel:+256700805000" class="btn btn-gold">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z" />
+          </svg>
+          Call Now
+        </a>
+        <a href="https://wa.me/256700805000?text=Hello%2C%20I'd%20like%20to%20book%20a%20table%20at%20Cantine%20Divino"
+          target="_blank" class="btn btn-whatsapp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          Book on WhatsApp
+        </a>
       </div>
     </div>
   </section>
@@ -560,7 +634,8 @@
           <span class="label">Reserve Your Table</span>
           <h2>Your Evening<br />Starts<br /><em>Right Here.</em></h2>
           <p>
-            Whether it's a quiet dinner for two, a celebration with close friends, or an important business meal that needs to impress — Cantine Divino delivers the kind of evening you'll talk about long after the last glass.
+            Whether it's a quiet dinner for two, a celebration with close friends, or an important business meal that
+            needs to impress — Cantine Divino delivers the kind of evening you'll talk about long after the last glass.
           </p>
           <div class="reserve-perks">
             <div class="perk">
@@ -584,10 +659,14 @@
             <div class="alt-label">Prefer not to fill a form?</div>
             <div class="inline-stack-sm">
               <a href="tel:+256700805000" class="btn btn-outline btn-compact">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16.92z" />
+                </svg>
                 Call Directly
               </a>
-              <a href="https://wa.me/256700805000?text=Hello%2C%20I'd%20like%20to%20book%20a%20table%20at%20Cantine%20Divino" target="_blank" class="btn btn-whatsapp btn-compact">
+              <a href="https://wa.me/256700805000?text=Hello%2C%20I'd%20like%20to%20book%20a%20table%20at%20Cantine%20Divino"
+                target="_blank" class="btn btn-whatsapp btn-compact">
                 WhatsApp Us
               </a>
             </div>
@@ -597,78 +676,65 @@
         <!-- Right: Reservation form -->
         <div class="reserve-form-card" data-reveal data-delay="2">
           <div class="form-title">Make a Reservation</div>
-          <p class="form-sub">We confirm within 2 hours. Prefer to call? <a href="tel:+256700805000">+256 700 805 000</a></p>
+          <p class="form-sub">Fill in your details and we'll confirm via WhatsApp.</p>
 
-          <div class="form-2col">
-            <div class="form-group">
-              <label class="form-label" for="r_name">Full Name</label>
-              <input class="form-control" type="text" id="r_name" placeholder="Your name" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="r_phone">Phone Number</label>
-              <input class="form-control" type="tel" id="r_phone" placeholder="+256..." />
-            </div>
-            <div class="form-group full">
-              <label class="form-label" for="r_email">Email Address</label>
-              <input class="form-control" type="email" id="r_email" placeholder="your@email.com" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="r_date">Date</label>
-              <input class="form-control" type="date" id="r_date" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="r_time">Time</label>
-              <div class="form-select-wrap">
-                <select class="form-control" id="r_time">
-                  <option value="">Select time</option>
-                  <option>12:00 PM – Lunch</option>
-                  <option>1:00 PM</option>
-                  <option>6:30 PM</option>
-                  <option>7:00 PM</option>
-                  <option>7:30 PM – Prime Evening</option>
-                  <option>8:00 PM</option>
-                  <option>8:30 PM</option>
-                  <option>9:00 PM</option>
-                </select>
+          <form id="reserve-form" novalidate>
+            <div class="form-2col">
+              <div class="form-group full">
+                <label class="form-label" for="r_name">Your Name</label>
+                <input class="form-control" type="text" id="r_name" placeholder="Full name" autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r_date">Date</label>
+                <input class="form-control" type="date" id="r_date" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r_time">Time</label>
+                <div class="form-select-wrap">
+                  <select class="form-control" id="r_time">
+                    <option value="">Select time</option>
+                    <option>12:00 PM – Lunch</option>
+                    <option>1:00 PM</option>
+                    <option>6:30 PM</option>
+                    <option>7:00 PM</option>
+                    <option>7:30 PM – Prime Evening</option>
+                    <option>8:00 PM</option>
+                    <option>8:30 PM</option>
+                    <option>9:00 PM</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="r_guests">Number of Guests</label>
+                <div class="form-select-wrap">
+                  <select class="form-control" id="r_guests">
+                    <option value="">Select guests</option>
+                    <option>1 Guest</option>
+                    <option>2 Guests</option>
+                    <option>3 Guests</option>
+                    <option>4 Guests</option>
+                    <option>5 – 8 Guests</option>
+                    <option>9+ (Private Event)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="r_notes">Notes <span
+                    style="opacity:0.5;font-weight:400;">(optional)</span></label>
+                <textarea class="form-control" id="r_notes" rows="3"
+                  placeholder="Dietary requirements, special occasion, seating preference…"></textarea>
               </div>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="r_guests">Guests</label>
-              <div class="form-select-wrap">
-                <select class="form-control" id="r_guests">
-                  <option value="">Number of guests</option>
-                  <option>1 Guest</option>
-                  <option>2 Guests</option>
-                  <option>3 Guests</option>
-                  <option>4 Guests</option>
-                  <option>5 – 8 Guests</option>
-                  <option>9+ (Private Event)</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="r_occasion">Occasion</label>
-              <div class="form-select-wrap">
-                <select class="form-control" id="r_occasion">
-                  <option value="">Optional</option>
-                  <option>Anniversary</option>
-                  <option>Birthday</option>
-                  <option>Business Dinner</option>
-                  <option>Date Night</option>
-                  <option>Celebration</option>
-                  <option>Just Dining</option>
-                </select>
-              </div>
-            </div>
-          </div>
 
-          <button class="btn btn-gold form-submit" onclick="submitForm()">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
-            Confirm Reservation
-          </button>
-          <p class="form-guarantee">
-            🔒 No payment required &nbsp;·&nbsp; We confirm within 2 hours &nbsp;·&nbsp; Cancellations welcome
-          </p>
+            <button class="btn btn-gold form-submit" type="submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              Send via WhatsApp
+            </button>
+          </form>
+
         </div>
       </div>
     </div>
@@ -687,8 +753,9 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="/media/images/LOGO.svg" alt="Cantine Divino" />
-          <p>Kampala's most celebrated Italian dining experience. Handmade pasta, prime steaks, curated wines, and a candlelit garden in the heart of Kololo.</p>
+          <img src="media/images/LOGO.svg" alt="Cantine Divino" />
+          <p>Kampala's most celebrated Italian dining experience. Handmade pasta, prime steaks, curated wines, and a
+            candlelit garden in the heart of Kololo.</p>
           <div class="footer-social">
             <a href="https://www.instagram.com/cantinedivino.ug/" target="_blank" class="social-pill">Instagram</a>
             <a href="https://www.facebook.com/cantinedivino.ug/" target="_blank" class="social-pill">Facebook</a>
@@ -707,10 +774,7 @@
         <div class="footer-col">
           <h4>Hours</h4>
           <ul>
-            <li><span>Mon – Thu: 9 AM – 10 PM</span></li>
-            <li><span>Fri – Sat: 9 AM – 11 PM</span></li>
-            <li><span>Sunday: 10 AM – 10 PM</span></li>
-            <li><span style="color: var(--gold); margin-top:8px; display:block;">Open Every Day</span></li>
+            <li><span>Everyday: 9:00 AM – 11:00 PM</span></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -719,7 +783,7 @@
             <li><a href="tel:+256700805000">+256 700 805 000</a></li>
             <li><a href="https://wa.me/256700805000" target="_blank">WhatsApp Booking</a></li>
             <li><a href="https://www.instagram.com/cantinedivino.ug/" target="_blank">@cantinedivino.ug</a></li>
-            <li><span>Mabua Road, Kololo<br/>Kampala, Uganda</span></li>
+            <li><span>Mabua Road, Kololo<br />Kampala, Uganda</span></li>
           </ul>
         </div>
       </div>
@@ -735,4 +799,5 @@
   ═════════════════════════════════════════════════════════════ -->
   <script src="script.js" defer></script>
 </body>
+
 </html>

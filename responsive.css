@@ -3,6 +3,8 @@ RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
+  .nav-links { gap: 20px; }
+  .nav-right { gap: 15px; }
   .pillars { grid-template-columns: repeat(2, 1fr); }
   .offerings-grid { grid-template-columns: 1fr 1fr; }
   .offer-card:nth-child(3) { grid-column: 1 / -1; aspect-ratio: 16 / 8; }
@@ -23,6 +25,7 @@ RESPONSIVE
   .g-8 { grid-column: 3; grid-row: 3; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .tcard { flex-basis: calc((100% - 24px) / 2); }
 }
 
 /* ─────────────────────────────────────────
@@ -143,7 +146,6 @@ RESPONSIVE
   }
   .stat:last-child { border-bottom: none; }
 
-  .testimonials,
   .about-grid,
   .menu-grid,
   .loc-grid,
@@ -151,6 +153,10 @@ RESPONSIVE
   .offerings-grid,
   .pillars {
     grid-template-columns: 1fr;
+  }
+
+  .tcard {
+    flex-basis: 100%;
   }
 
   .exp-top,
@@ -224,10 +230,15 @@ RESPONSIVE
   .loc-grid { gap: 40px; }
 
   .loc-actions,
+  .loc-actions-center,
   .menu-cta-btns {
     align-items: center;
     justify-content: center;
     gap: var(--stack-sm);
+  }
+
+  .loc-actions-center {
+    flex-wrap: wrap;
   }
 
   .reserve-inner {
@@ -497,6 +508,8 @@ RESPONSIVE
     font-size: 0.84rem;
     line-height: 1.65;
   }
+
+
 
   .menu-item {
     display: grid;
