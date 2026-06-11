@@ -137,12 +137,28 @@
         const buttons = qsa(SELECTORS.filterButtons);
         if (!buttons.length) return;
 
+        const allItems = qsa('.menu-item');
+
+        function applyFilter(category) {
+            allItems.forEach((item) => {
+                const itemCategory = item.dataset.category || '';
+                const visible = category === 'all' || itemCategory === category;
+                item.style.display = visible ? '' : 'none';
+            });
+        }
+
         buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            buttons.forEach((btn) => btn.classList.remove('active'));
-            button.classList.add('active');
+            button.addEventListener('click', () => {
+                buttons.forEach((btn) => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const category = button.textContent.trim().toLowerCase();
+                applyFilter(category);
+            });
         });
-        });
+
+        // Initialise with "All" active
+        applyFilter('all');
     }
 
     function initDateMin() {

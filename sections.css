@@ -281,7 +281,7 @@
     gap: 24px;
     }
     .pillar {
-    background: var(--surface); 
+    background: #ffffff; 
     padding: 44px 32px;
     border: 1px solid var(--border);
     position: relative;
@@ -299,18 +299,23 @@
     transition: transform 0.4s var(--ease-out);
     }
     .pillar:hover {
-    background: var(--card); 
+    background: #ffffff; 
     border-color: var(--border-mid);
     transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(82, 43, 100, 0.04);
+    box-shadow: 0 12px 30px rgba(82, 43, 100, 0.08);
     }
     .pillar:hover::after { transform: scaleX(1); }
 
     .pillar-icon {
-    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
-    display: block;
-    filter: sepia(0.2) saturate(0.8); 
+    }
+    .pillar-icon img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
     }
     .pillar h3 {
     font-family: var(--font-serif);
