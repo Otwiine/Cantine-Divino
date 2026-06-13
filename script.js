@@ -46,10 +46,15 @@
 
     function initNavScroll() {
         state.nav = qs(SELECTORS.nav);
-        if (!state.nav) return;
+        const stickyCta = qs('#stickyMobileCta');
 
         const onScroll = () => {
-        state.nav.classList.toggle('solid', window.scrollY > 50);
+            if (state.nav) {
+                state.nav.classList.toggle('solid', window.scrollY > 50);
+            }
+            if (stickyCta) {
+                stickyCta.classList.toggle('visible', window.scrollY > 500);
+            }
         };
 
         window.addEventListener('scroll', onScroll, { passive: true });

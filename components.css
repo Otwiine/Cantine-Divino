@@ -165,6 +165,68 @@ NAV
   list-style: none;
   gap: 40px;
 }
+/* ═══════════════════════════════════════════════════════════
+   STICKY MOBILE CTA
+   ═══════════════════════════════════════════════════════════ */
+.sticky-mobile-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--obsidian);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-mid);
+    z-index: 100;
+    padding: 10px 16px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+}
+.sticky-mobile-cta.visible {
+    transform: translateY(0);
+}
+.sticky-mobile-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+.sticky-cta-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--ivory);
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+}
+.sticky-cta-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--gold);
+}
+.sticky-cta-btn.primary {
+    background: var(--gold);
+    color: var(--obsidian);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+}
+.sticky-cta-btn.primary svg {
+    color: var(--obsidian);
+}
+
+@media (max-width: 768px) {
+    .sticky-mobile-cta {
+        display: block;
+    }
+}
 
 .nav-links a {
   font-size: 0.68rem;

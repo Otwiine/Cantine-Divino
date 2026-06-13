@@ -201,9 +201,9 @@
     .proof-card-label { font-size: 0.68rem; color: var(--ivory); letter-spacing: 0.06em; }
 
     /* ═══════════════════════════════════════════════════════════
-    TICKER
+    QUICK ACTION STRIP
     ═══════════════════════════════════════════════════════════ */
-    .ticker {
+    #quick-actions {
     background: var(--plum); 
     overflow: hidden;
     padding: 14px 0;
@@ -211,30 +211,32 @@
     border-top: 1px solid var(--border-mid);
     border-bottom: 1px solid var(--border-mid);
     }
-    .ticker-inner {
+    .qa-strip {
     display: flex;
-    animation: ticker 30s linear infinite;
-    width: max-content;
-    }
-    @keyframes ticker { to { transform: translateX(-50%); } }
-    .ticker-item {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 0;
-    white-space: nowrap;
+    gap: 32px;
+    flex-wrap: wrap;
+    }
+    .qa-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 0.62rem;
     font-weight: 600;
     letter-spacing: 0.25em; 
     text-transform: uppercase;
     color: var(--gold-pale); 
-    padding: 0 40px;
+    text-decoration: none;
+    transition: color 0.3s;
     }
-    .ticker-sep {
-    display: inline-block;
-    margin: 0 16px;
-    color: var(--obsidian);
-    opacity: 0.3;
-    font-size: 0.5rem;
+    .qa-item:hover {
+    color: var(--gold);
+    }
+    .qa-item svg {
+    width: 14px;
+    height: 14px;
+    color: var(--gold);
     }
 
     /* ═══════════════════════════════════════════════════════════
@@ -277,7 +279,7 @@
 
     .pillars {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 24px;
     }
     .pillar {
@@ -848,7 +850,28 @@
     object-fit: cover; 
     display: block;
     }
-    .g { overflow: hidden; background: var(--surface); }
+    .g { overflow: hidden; background: var(--surface); position: relative; }
+    .g::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(31, 14, 38, 0.7) 0%, transparent 50%);
+    pointer-events: none;
+    }
+    .g-caption {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    color: var(--ivory);
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    z-index: 2;
+    pointer-events: none;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
     .g img {
     width: 100%; height: 100%;
     object-fit: cover;
