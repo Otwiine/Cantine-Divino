@@ -387,55 +387,7 @@ NAV
   cursor: pointer;
 }
 
-/* ── Sticky WhatsApp bubble ── */
-.wa-bubble {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 500;
-  width: 56px;
-  height: 56px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.25);
-  transition: all 0.4s var(--ease-out);
-}
 
-.wa-bubble:hover {
-  transform: scale(1.1) translateY(-4px);
-  box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
-}
-
-.wa-bubble svg { width: 26px; height: 26px; fill: #FFFFFF; }
-
-.wa-tooltip {
-  position: absolute;
-  right: calc(100% + 14px);
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--obsidian);
-  border: 1px solid var(--border-mid);
-  border-radius: 6px;
-  padding: 8px 16px;
-  white-space: nowrap;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--plum);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(82, 43, 100, 0.05);
-}
-
-.wa-bubble:hover .wa-tooltip {
-  opacity: 1;
-  transform: translateY(-50%) translateX(-4px);
-}
 
 .btn,
 .nav-cta,

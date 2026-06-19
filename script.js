@@ -53,7 +53,7 @@
                 state.nav.classList.toggle('solid', window.scrollY > 50);
             }
             if (stickyCta) {
-                stickyCta.classList.toggle('visible', window.scrollY > 500);
+                stickyCta.classList.toggle('visible', window.scrollY > 0);
             }
         };
 
