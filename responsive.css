@@ -75,7 +75,8 @@ RESPONSIVE
   }
 
   .hero-proof-card,
-  .hero-scroll {
+  .hero-scroll,
+  #quick-actions {
     display: none;
   }
 
@@ -379,8 +380,15 @@ RESPONSIVE
     padding: 36px 24px;
   }
 
-  .phone-band {
-    padding: 40px 0;
+  #faq {
+    padding: 60px 0;
+  }
+  .faq-summary {
+    padding: 18px 20px;
+    font-size: 0.95rem;
+  }
+  .faq-content {
+    padding: 0 20px 20px;
   }
 }
 
